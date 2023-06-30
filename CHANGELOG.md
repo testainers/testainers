@@ -1,3 +1,7 @@
+## 0.0.3
+
+- Removing http package dependency.
+
 ## 0.0.2 - 2023-06-30
 
 - Adding Mongodb container.

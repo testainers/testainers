@@ -10,9 +10,6 @@ dev_dependencies:
   # https://pub.dev/packages/coverage
   coverage: ^1.6.3
 
-  # https://pub.dev/packages/http
-  http: ^1.1.0
-
   # https://pub.dev/packages/lints
   lints: ^2.1.0
 
