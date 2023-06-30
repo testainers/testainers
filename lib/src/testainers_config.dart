@@ -2,16 +2,16 @@
 ///
 ///
 class TestainersConfig {
-  final int timeout;
+  final Duration timeout;
   final String runner;
-  final String host;
+  final Duration bootSleep;
 
   ///
   ///
   ///
   const TestainersConfig({
-    this.timeout = 120,
+    this.timeout = const Duration(seconds: 60),
     this.runner = 'docker',
-    this.host = 'localhost',
+    this.bootSleep = const Duration(seconds: 10),
   });
 }
