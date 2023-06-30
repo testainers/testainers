@@ -17,6 +17,7 @@ void main(List<String> args) {
 
   if (!mdFile.existsSync()) {
     print('Markdown file not exists.');
+    exit(20);
   }
 
   const String template = '''
@@ -24,7 +25,7 @@ void main(List<String> args) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>curt</title>
+    <title>testainers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
           rel="stylesheet"
