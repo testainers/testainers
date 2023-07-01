@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:test/test.dart';
-import 'package:testainers/testainers.dart';
+import 'package:testainers/src/testainers_http_bin.dart';
 
 import '../helpers/http_service.dart';
 

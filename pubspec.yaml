@@ -1,7 +1,8 @@
 name: testainers
-description: Testainer is a powerful Dart plugin designed to streamline the management of containers for testing purposes.
-version: 0.0.2
+description: Testainers is a powerful Dart plugin designed to streamline the management of containers for testing purposes.
+version: 0.0.3
 repository: https://github.com/edufolly/testainers
+homepage: https://edufolly.github.io/testainers/
 
 environment:
   sdk: ^3.0.0
@@ -10,14 +11,17 @@ dev_dependencies:
   # https://pub.dev/packages/coverage
   coverage: ^1.6.3
 
-  # https://pub.dev/packages/http
-  http: ^1.1.0
+  # https://pub.dev/packages/dartssh2
+  dartssh2: ^2.8.2
 
   # https://pub.dev/packages/lints
   lints: ^2.1.0
 
   # https://pub.dev/packages/markdown
   markdown: ^7.1.0
+
+  # https://pub.dev/packages/mongo_dart
+  mongo_dart: ^0.9.1
 
   # https://pub.dev/packages/test
   test: ^1.24.0
