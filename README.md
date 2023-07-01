@@ -4,6 +4,7 @@
 [![pub package](https://img.shields.io/pub/v/testainers?include_prereleases.svg "testainers")](https://pub.dev/packages/testainers)
 [![Testainers](https://img.shields.io/github/license/edufolly/testainers)](https://github.com/edufolly/testainers)
 [![Testainers](https://img.shields.io/github/actions/workflow/status/edufolly/testainers/main.yml?branch=main)](https://github.com/edufolly/testainers)
+[![CoverageReport](https://img.shields.io/badge/coverage-report-blue "coverage report")](https://edufolly.github.io/testainers/coverage/)
 
 Testainers is a powerful Dart plugin designed to streamline the management of
 containers for testing purposes. With Testainers, developers can effortlessly
