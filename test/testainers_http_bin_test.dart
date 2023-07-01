@@ -1,9 +1,6 @@
-import 'dart:io';
-
+import 'package:http/http.dart';
 import 'package:test/test.dart';
-import 'package:testainers/src/testainers_http_bin.dart';
-
-import '../helpers/http_service.dart';
+import 'package:testainers/testainers.dart';
 
 ///
 ///
@@ -14,7 +11,6 @@ void main() {
   ///
   group('Test HttpBin', () {
     final TestainersHttpBin container = TestainersHttpBin();
-    final HttpService httpService = HttpService();
 
     ///
     setUpAll(() async {
@@ -23,18 +19,15 @@ void main() {
 
     ///
     test('First Test', () async {
-      final HttpClientResponse response = await httpService
-          .get(Uri.parse('http://localhost:${container.httpPort}'));
+      final Response response =
+          await get(Uri.parse('http://localhost:${container.httpPort}'));
 
       expect(response.statusCode, 200);
-      expect(response.headers.value('date'), isNotEmpty);
-      expect(response.contentLength, greaterThan(0));
+      expect(response.headers, isNotEmpty);
+      expect(response.body, isNotEmpty);
     });
 
     ///
-    tearDownAll(() {
-      httpService.close();
-      container.stop();
-    });
+    tearDownAll(container.stop);
   });
 }
