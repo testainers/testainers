@@ -1,5 +1,6 @@
-## 0.0.3
+## 0.0.3 - 2023-07-01
 
+- Adding sshd container.
 - Removing http package dependency.
 
 ## 0.0.2 - 2023-06-30
