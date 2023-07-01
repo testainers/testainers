@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-06-30 18:55:34</td>
+            <td class="headerValue">2023-07-01 19:36:24</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -70,19 +70,19 @@
 <a name="8"><span class="lineNum">       8 </span>            :   ///</a>
 <a name="9"><span class="lineNum">       9 </span>            :   ///</a>
 <a name="10"><span class="lineNum">      10 </span>            :   ///</a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          1 :   static Future&lt;int&gt; generatePort({InternetAddress? address}) async {</span></a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          4 :   static Future&lt;int&gt; generatePort({InternetAddress? address}) async {</span></a>
 <a name="12"><span class="lineNum">      12 </span>            :     final RawServerSocket socket =</a>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          2 :         await RawServerSocket.bind(address ?? InternetAddress.loopbackIPv4, 0);</span></a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 :     final int port = socket.port;</span></a>
-<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 :     await socket.close();</span></a>
+<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          8 :         await RawServerSocket.bind(address ?? InternetAddress.loopbackIPv4, 0);</span></a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          4 :     final int port = socket.port;</span></a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          4 :     await socket.close();</span></a>
 <a name="16"><span class="lineNum">      16 </span>            :     return port;</a>
 <a name="17"><span class="lineNum">      17 </span>            :   }</a>
 <a name="18"><span class="lineNum">      18 </span>            : </a>
 <a name="19"><span class="lineNum">      19 </span>            :   ///</a>
 <a name="20"><span class="lineNum">      20 </span>            :   ///</a>
 <a name="21"><span class="lineNum">      21 </span>            :   ///</a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 :   static String generateName() {</span></a>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          1 :     final List&lt;String&gt; animalList = &lt;String&gt;[</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          4 :   static String generateName() {</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          4 :     final List&lt;String&gt; animalList = &lt;String&gt;[</span></a>
 <a name="24"><span class="lineNum">      24 </span>            :       'dog',</a>
 <a name="25"><span class="lineNum">      25 </span>            :       'cat',</a>
 <a name="26"><span class="lineNum">      26 </span>            :       'lion',</a>
@@ -135,7 +135,7 @@
 <a name="73"><span class="lineNum">      73 </span>            :       'pig'</a>
 <a name="74"><span class="lineNum">      74 </span>            :     ];</a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          1 :     final List&lt;String&gt; adjectiveList = &lt;String&gt;[</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          4 :     final List&lt;String&gt; adjectiveList = &lt;String&gt;[</span></a>
 <a name="77"><span class="lineNum">      77 </span>            :       'fierce',</a>
 <a name="78"><span class="lineNum">      78 </span>            :       'majestic',</a>
 <a name="79"><span class="lineNum">      79 </span>            :       'graceful',</a>
@@ -187,8 +187,8 @@
 <a name="125"><span class="lineNum">     125 </span>            :       'inquisitive'</a>
 <a name="126"><span class="lineNum">     126 </span>            :     ];</a>
 <a name="127"><span class="lineNum">     127 </span>            : </a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          5 :     return '${animalList[Random().nextInt(animalList.length)]}-'</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          4 :         '${adjectiveList[Random().nextInt(adjectiveList.length)]}';</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">         20 :     return '${animalList[Random().nextInt(animalList.length)]}-'</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">         16 :         '${adjectiveList[Random().nextInt(adjectiveList.length)]}';</span></a>
 <a name="130"><span class="lineNum">     130 </span>            :   }</a>
 <a name="131"><span class="lineNum">     131 </span>            : }</a>
 </pre>
