@@ -17,5 +17,15 @@ code while ensuring the reliability and integrity of their software through
 comprehensive containerized testing.
 
 ## Funding
+Your contribution will help drive the development of quality tools
+for the Flutter and Dart developer community. Any amount will be appreciated.
+Thank you for your continued support!
 
 [![BuyMeACoffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/edufolly)
+
+### PIX
+Sua contribuição ajudará a impulsionar o desenvolvimento de ferramentas de qualidade 
+para a comunidade de desenvolvedores Flutter e Dart. Qualquer quantia será apreciada. 
+Obrigado pelo seu apoio contínuo!
+
+[![PIX](helpers/pix.png)](https://nubank.com.br/pagar/2bt2q/RBr4Szfuwr)
