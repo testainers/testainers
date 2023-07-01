@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Adding container stop time parameter.
+
 ## 0.0.3 - 2023-07-01
 
 - Adding sshd container.
