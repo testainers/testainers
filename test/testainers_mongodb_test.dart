@@ -19,7 +19,7 @@ void main() {
     final HttpService httpService = HttpService();
     late final Db db;
     late final DbCollection collection;
-    const String host = '127.0.0.1';
+    const String host = 'localhost';
     final Map<String, dynamic> map = <String, dynamic>{
       'login': 'jdoe',
       'name': 'John Doe',
@@ -47,6 +47,18 @@ void main() {
     test('Insert One Test', () async {
       final WriteResult writeResult = await collection.insertOne(map);
       expect(writeResult.hasWriteErrors, isFalse);
+    });
+
+    ///
+    test('', () async {
+      final List<Map<String, dynamic>> list =
+          await collection.find(where.eq('login', 'jdoe')).toList();
+      expect(list.length, 1);
+
+      final Map<String, dynamic> map = list.first;
+      expect(map['login'], 'jdoe');
+      expect(map['name'], 'John Doe');
+      expect(map['email'], 'john@doe.com');
     });
 
     ///
