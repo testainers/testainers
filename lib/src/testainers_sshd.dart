@@ -18,7 +18,7 @@ class TestainersSshd extends Testainers {
     int? port,
     super.config,
     super.name,
-    super.image = 'edufolly/sshd-container',
+    super.image = 'testainers/sshd-container',
     super.tag = 'latest',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
