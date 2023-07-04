@@ -83,6 +83,7 @@ void main() {
 
 Open an issue to request a new container.
 
+- [X] redis - https://hub.docker.com/_/redis - v0.0.5
 - [X] sshd - https://hub.docker.com/r/testainers/sshd-container - v0.0.4
 - [x] MongoDB - https://hub.docker.com/_/mongo - v0.0.2
 - [x] httpbin - https://hub.docker.com/r/kennethreitz/httpbin - v0.0.1

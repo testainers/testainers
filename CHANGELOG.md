@@ -1,3 +1,7 @@
+## 0.0.5 - 2023-07-05
+
+- Adding redis container.
+
 ## 0.0.4 - 2023-07-04
 
 - Adding container stop time parameter.
