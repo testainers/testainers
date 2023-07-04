@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:dartssh2/dartssh2.dart';
 import 'package:test/test.dart';
-import 'package:testainers/src/testainers_sshd.dart';
+import 'package:testainers/testainers.dart';
 
 ///
 ///
@@ -13,8 +13,6 @@ void main() {
   ///
   group('Test sshd', () {
     final TestainersSshd container = TestainersSshd();
-
-    const Duration timeout = Duration(seconds: 10);
 
     late final SSHClient? client;
     late final SSHSession? session;
@@ -29,7 +27,7 @@ void main() {
       final SSHSocket socket = await SSHSocket.connect(
         'localhost',
         container.port,
-        timeout: timeout,
+        timeout: const Duration(seconds: 10),
       );
 
       client = SSHClient(
@@ -60,8 +58,6 @@ void main() {
     });
 
     ///
-    tearDownAll(() async {
-      await container.stop();
-    });
+    tearDownAll(container.stop);
   });
 }

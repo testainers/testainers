@@ -1,6 +1,6 @@
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:test/test.dart';
-import 'package:testainers/src/testainers_mongodb.dart';
+import 'package:testainers/testainers.dart';
 
 ///
 ///
