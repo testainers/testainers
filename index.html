@@ -12,31 +12,81 @@
 <body>
   <div class="col-lg-8 mx-auto p-4 py-md-5">
     <main>
-<h1 id="testainers">testainers</h1>
+<h1>
+<img src="helpers/testainers-100.png" alt="Testainers" title="Testainers">
+Testainers
+</h1>
+<hr />
 <p><a href="https://github.com/edufolly/testainers/stargazers"><img src="https://img.shields.io/badge/%20built%20with-%20%E2%9D%A4-ff69b4.svg" alt="BuildWithLove" title="build with love" /></a>
-<a href="https://pub.dev/packages/testainers"><img src="https://img.shields.io/pub/v/testainers?include_prereleases.svg" alt="pub package" title="testainers" /></a>
-<a href="https://github.com/edufolly/testainers"><img src="https://img.shields.io/github/license/edufolly/testainers" alt="Testainers" /></a>
-<a href="https://github.com/edufolly/testainers"><img src="https://img.shields.io/github/actions/workflow/status/edufolly/testainers/main.yml?branch=main" alt="Testainers" /></a></p>
+<a href="https://pub.dev/packages/testainers"><img src="https://img.shields.io/pub/v/testainers?include_prereleases.svg" alt="pub package" title="Pub package" /></a>
+<a href="https://github.com/edufolly/testainers"><img src="https://img.shields.io/github/license/edufolly/testainers?color=blue" alt="Licence" title="Licence" /></a>
+<a href="https://github.com/edufolly/testainers"><img src="https://img.shields.io/github/actions/workflow/status/edufolly/testainers/main.yml?branch=main" alt="Build" title="Build" /></a>
+<a href="https://edufolly.github.io/testainers/coverage/"><img src="https://img.shields.io/badge/coverage-report-C08EA1" alt="Coverage Report" title="Coverage Report" /></a></p>
 <p>Testainers is a powerful Dart plugin designed to streamline the management of
 containers for testing purposes. With Testainers, developers can effortlessly
 create, configure, and manage isolated test environments within containers,
-ensuring consistent and reliable testing processes. This plugin provides a
-user-friendly interface to handle container orchestration, allowing developers
-to quickly spin up and tear down test containers, define dependencies, and
-execute tests seamlessly. Testainers empowers developers to achieve efficient and
-reproducible testing workflows, enabling them to focus on writing high-quality
-code while ensuring the reliability and integrity of their software through
-comprehensive containerized testing.</p>
+ensuring consistent and reliable testing processes.</p>
+<p>This plugin provides a user-friendly interface to handle container
+orchestration, allowing developers to quickly spin up and tear down test
+containers, define dependencies, and execute tests seamlessly.</p>
+<p>Testainers empowers developers to achieve efficient and reproducible testing
+workflows, enabling them to focus on writing high-quality code while ensuring
+the reliability and integrity of their software through comprehensive
+containerized testing.</p>
 <h2 id="funding">Funding</h2>
-<p>Your contribution will help drive the development of quality tools
-for the Flutter and Dart developer community. Any amount will be appreciated.
-Thank you for your continued support!</p>
+<p>Your contribution will help drive the development of quality tools for the
+Flutter and Dart developer community. Any amount will be appreciated. Thank you
+for your continued support!</p>
 <p><a href="https://www.buymeacoffee.com/edufolly"><img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg" alt="BuyMeACoffee" /></a></p>
 <h2 id="pix">PIX</h2>
-<p>Sua contribuição ajudará a impulsionar o desenvolvimento de ferramentas de qualidade
-para a comunidade de desenvolvedores Flutter e Dart. Qualquer quantia será apreciada.
-Obrigado pelo seu apoio contínuo!</p>
+<p>Sua contribuição ajudará a impulsionar o desenvolvimento de ferramentas de
+qualidade para a comunidade de desenvolvedores Flutter e Dart. Qualquer quantia
+será apreciada. Obrigado pelo seu apoio contínuo!</p>
 <p><a href="https://nubank.com.br/pagar/2bt2q/RBr4Szfuwr"><img src="helpers/pix.png" alt="PIX" /></a></p>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-dart">import 'package:http/http.dart';
+import 'package:test/test.dart';
+import 'package:testainers/testainers.dart';
+
+///
+///
+///
+void main() {
+  ///
+  ///
+  ///
+  group('Test HttpBin', () {
+    final TestainersHttpBin container = TestainersHttpBin();
+
+    ///
+    setUpAll(() async {
+      await container.start();
+    });
+
+    ///
+    test('First Test', () async {
+      final Response response =
+      await get(Uri.parse('http://localhost:${container.httpPort}'));
+
+      expect(response.statusCode, 200);
+      expect(response.headers, isNotEmpty);
+      expect(response.body, isNotEmpty);
+    });
+
+    ///
+    tearDownAll(container.stop);
+  });
+}
+</code></pre>
+<h2 id="available-containers">Available Containers</h2>
+<p>Open an issue to request a new container.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked="true"></input>sshd - <a href="https://hub.docker.com/r/testainers/sshd-container">https://hub.docker.com/r/testainers/sshd-container</a> - v0.0.4</li>
+<li class="task-list-item"><input type="checkbox" checked="true"></input>MongoDB - <a href="https://hub.docker.com/_/mongo">https://hub.docker.com/_/mongo</a> - v0.0.2</li>
+<li class="task-list-item"><input type="checkbox" checked="true"></input>httpbin - <a href="https://hub.docker.com/r/kennethreitz/httpbin">https://hub.docker.com/r/kennethreitz/httpbin</a> - v0.0.1</li>
+<li class="task-list-item"><input type="checkbox" checked="true"></input>http-https-echo - <a href="https://hub.docker.com/r/mendhak/http-https-echo">https://hub.docker.com/r/mendhak/http-https-echo</a> -
+v0.0.1</li>
+</ul>
 
     </main>
   </div>
