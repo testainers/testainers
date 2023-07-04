@@ -1,4 +1,4 @@
-## 0.0.4 - 2023-07-02
+## 0.0.4 - 2023-07-04
 
 - Adding container stop time parameter.
 - Changing sshd container from edufolly to testainers.
