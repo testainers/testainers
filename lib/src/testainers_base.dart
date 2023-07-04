@@ -8,7 +8,7 @@ import 'package:testainers/src/testainers_utils.dart';
 ///
 ///
 ///
-abstract class Testainers {
+class Testainers {
   final TestainersConfig config;
   final String name;
   final String image;

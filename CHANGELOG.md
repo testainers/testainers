@@ -1,3 +1,7 @@
+## 0.0.6
+
+- Creating tests for scratch testainers.
+
 ## 0.0.5 - 2023-07-05
 
 - Adding redis container.
