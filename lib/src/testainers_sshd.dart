@@ -18,7 +18,7 @@ class TestainersSshd extends Testainers {
     int? port,
     super.config,
     super.name,
-    super.image = 'edufolly/sshd-container',
+    super.image = 'testainers/sshd-container',
     super.tag = 'latest',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
@@ -33,6 +33,7 @@ class TestainersSshd extends Testainers {
     super.healthRetries = 2,
     super.healthTimeout = 3,
     super.healthStartPeriod = 1,
+    super.stopTime = 1,
   })  : _username = username,
         _password = password,
         _port = port;

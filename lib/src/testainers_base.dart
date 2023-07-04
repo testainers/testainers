@@ -23,6 +23,7 @@ abstract class Testainers {
   final int healthTimeout;
   final int healthStartPeriod;
   final bool noHealthcheck;
+  final int stopTime;
   String? id;
 
   ///
@@ -41,6 +42,7 @@ abstract class Testainers {
     this.healthTimeout = 0,
     this.healthStartPeriod = 0,
     this.noHealthcheck = false,
+    this.stopTime = 0,
     this.config = const TestainersConfig(),
     String? name,
   }) : name = name ?? TestainersUtils.generateName();
@@ -191,6 +193,7 @@ abstract class Testainers {
   Future<void> stop() async {
     final ProcessResult result = await Process.run(config.runner, <String>[
       'stop',
+      if (stopTime > 0) ...<String>['--time', '$stopTime'],
       name,
     ]).timeout(config.timeout);
 
