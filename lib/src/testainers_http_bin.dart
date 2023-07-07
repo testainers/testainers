@@ -20,6 +20,13 @@ class TestainersHttpBin extends Testainers {
     super.env = const <String, String>{},
     super.detached = true,
     super.remove = true,
+    super.healthCmd,
+    super.healthInterval,
+    super.healthRetries,
+    super.healthTimeout,
+    super.healthStartPeriod,
+    super.noHealthcheck,
+    super.stopTime,
   }) : _httpPort = httpPort;
 
   ///

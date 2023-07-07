@@ -30,6 +30,8 @@ class TestainersMongodb extends Testainers {
     super.healthRetries = 2,
     super.healthTimeout = 3,
     super.healthStartPeriod = 1,
+    super.noHealthcheck,
+    super.stopTime,
   })  : _username = username,
         _password = password,
         _port = port;

@@ -1,5 +1,6 @@
 ## 0.0.6
 
+- Adding all attributes to predefined containers.
 - Creating tests for scratch testainers.
 
 ## 0.0.5 - 2023-07-05
