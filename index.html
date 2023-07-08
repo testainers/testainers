@@ -44,7 +44,9 @@ qualidade para a comunidade de desenvolvedores Flutter e Dart. Qualquer quantia
 será apreciada. Obrigado pelo seu apoio contínuo!</p>
 <p><a href="https://nubank.com.br/pagar/2bt2q/RBr4Szfuwr"><img src="helpers/pix.png" alt="PIX" /></a></p>
 <h2 id="usage">Usage</h2>
-<pre><code class="language-dart">import 'package:http/http.dart';
+<pre><code class="language-dart">import 'dart:io';
+
+import 'package:http/http.dart';
 import 'package:test/test.dart';
 import 'package:testainers/testainers.dart';
 
@@ -55,8 +57,8 @@ void main() {
   ///
   ///
   ///
-  group('Test HttpBin', () {
-    final TestainersHttpBin container = TestainersHttpBin();
+  group('Test Httpbucket', () {
+    final TestainersHttpbucket container = TestainersHttpbucket();
 
     ///
     setUpAll(() async {
@@ -64,9 +66,10 @@ void main() {
     });
 
     ///
-    test('First Test', () async {
-      final Response response =
-      await get(Uri.parse('http://localhost:${container.httpPort}'));
+    test('Http Test', () async {
+      final Response response = await get(
+        Uri.parse('http://localhost:${container.httpPort}/methods'),
+      );
 
       expect(response.statusCode, 200);
       expect(response.headers, isNotEmpty);
@@ -81,6 +84,7 @@ void main() {
 <h2 id="available-containers">Available Containers</h2>
 <p>Open an issue to request a new container.</p>
 <ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked="true"></input>httpbucket - <a href="https://hub.docker.com/r/testainers/httpbucket">https://hub.docker.com/r/testainers/httpbucket</a> - v0.0.6</li>
 <li class="task-list-item"><input type="checkbox" checked="true"></input>redis - <a href="https://hub.docker.com/_/redis">https://hub.docker.com/_/redis</a> - v0.0.5</li>
 <li class="task-list-item"><input type="checkbox" checked="true"></input>sshd - <a href="https://hub.docker.com/r/testainers/sshd-container">https://hub.docker.com/r/testainers/sshd-container</a> - v0.0.4</li>
 <li class="task-list-item"><input type="checkbox" checked="true"></input>MongoDB - <a href="https://hub.docker.com/_/mongo">https://hub.docker.com/_/mongo</a> - v0.0.2</li>
