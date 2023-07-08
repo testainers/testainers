@@ -4,18 +4,20 @@ import 'package:testainers/src/testainers_utils.dart';
 ///
 ///
 ///
-class TestainersHttpBin extends Testainers {
+class TestainersHttpbucket extends Testainers {
   int? _httpPort;
+  int? _httpsPort;
 
   ///
   ///
   ///
-  TestainersHttpBin({
+  TestainersHttpbucket({
     int? httpPort,
+    int? httpsPort,
     super.config,
     super.name,
-    super.image = 'kennethreitz/httpbin',
-    super.tag = 'latest',
+    super.image = 'testainers/httpbucket',
+    super.tag = '0.0.3',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
     super.detached = true,
@@ -27,7 +29,8 @@ class TestainersHttpBin extends Testainers {
     super.healthStartPeriod,
     super.noHealthcheck,
     super.stopTime,
-  }) : _httpPort = httpPort;
+  })  : _httpPort = httpPort,
+        _httpsPort = httpsPort;
 
   ///
   ///
@@ -37,9 +40,15 @@ class TestainersHttpBin extends Testainers {
   ///
   ///
   ///
+  int get httpsPort => _httpsPort ?? -1;
+
+  ///
+  ///
+  ///
   @override
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _httpPort ??= await TestainersUtils.generatePort();
-    return <int, int>{...ports, _httpPort!: 80};
+    _httpsPort ??= await TestainersUtils.generatePort();
+    return <int, int>{...ports, _httpPort!: 8080, _httpsPort!: 8443};
   }
 }

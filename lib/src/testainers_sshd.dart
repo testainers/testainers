@@ -33,6 +33,7 @@ class TestainersSshd extends Testainers {
     super.healthRetries = 2,
     super.healthTimeout = 3,
     super.healthStartPeriod = 1,
+    super.noHealthcheck,
     super.stopTime = 1,
   })  : _username = username,
         _password = password,
