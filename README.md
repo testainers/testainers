@@ -44,6 +44,8 @@ será apreciada. Obrigado pelo seu apoio contínuo!
 ## Usage
 
 ```dart
+import 'dart:io';
+
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 import 'package:testainers/testainers.dart';
@@ -55,8 +57,8 @@ void main() {
   ///
   ///
   ///
-  group('Test HttpBin', () {
-    final TestainersHttpBin container = TestainersHttpBin();
+  group('Test Httpbucket', () {
+    final TestainersHttpbucket container = TestainersHttpbucket();
 
     ///
     setUpAll(() async {
@@ -64,9 +66,10 @@ void main() {
     });
 
     ///
-    test('First Test', () async {
-      final Response response =
-      await get(Uri.parse('http://localhost:${container.httpPort}'));
+    test('Http Test', () async {
+      final Response response = await get(
+        Uri.parse('http://localhost:${container.httpPort}/methods'),
+      );
 
       expect(response.statusCode, 200);
       expect(response.headers, isNotEmpty);
@@ -83,6 +86,7 @@ void main() {
 
 Open an issue to request a new container.
 
+- [X] httpbucket - https://hub.docker.com/r/testainers/httpbucket - v0.0.6
 - [X] redis - https://hub.docker.com/_/redis - v0.0.5
 - [X] sshd - https://hub.docker.com/r/testainers/sshd-container - v0.0.4
 - [x] MongoDB - https://hub.docker.com/_/mongo - v0.0.2

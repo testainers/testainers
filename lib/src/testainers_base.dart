@@ -60,7 +60,27 @@ class Testainers {
   ///
   ///
   ///
-  Future<void> start({Duration? bootSleep}) async {
+  Future<String> start({Duration? bootSleep}) async {
+    if (config.runner.isEmpty) {
+      throw TestainersException('Runner not defined.');
+    }
+
+    if (config.defaultUsername.isEmpty) {
+      throw TestainersException('Default username not defined.');
+    }
+
+    if (config.defaultPassword.isEmpty) {
+      throw TestainersException('Default password not defined.');
+    }
+
+    if (image.isEmpty) {
+      throw TestainersException('Image not defined.');
+    }
+
+    if (tag.isEmpty) {
+      throw TestainersException('Tag not defined.');
+    }
+
     ProcessResult result = await Process.run(config.runner, <String>[
       '--version',
     ]).timeout(config.timeout);
@@ -85,6 +105,16 @@ class Testainers {
     ];
 
     for (final MapEntry<int, int> entry in effectivePorts.entries) {
+      /// Zero is a docker random port.
+      if (entry.key <= 0 ||
+          entry.key > 65535 ||
+          entry.value <= 0 ||
+          entry.value > 65535) {
+        throw TestainersException(
+          'Invalid port ${entry.key}:${entry.value}.',
+        );
+      }
+
       arguments
         ..add('-p')
         ..add('${entry.key}:${entry.value}');
@@ -185,6 +215,8 @@ class Testainers {
         );
       }
     }
+
+    return id!;
   }
 
   ///

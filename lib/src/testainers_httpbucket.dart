@@ -4,20 +4,20 @@ import 'package:testainers/src/testainers_utils.dart';
 ///
 ///
 ///
-class TestainersHttpHttpsEcho extends Testainers {
+class TestainersHttpbucket extends Testainers {
   int? _httpPort;
   int? _httpsPort;
 
   ///
   ///
   ///
-  TestainersHttpHttpsEcho({
+  TestainersHttpbucket({
     int? httpPort,
     int? httpsPort,
     super.config,
     super.name,
-    super.image = 'mendhak/http-https-echo',
-    super.tag = '30',
+    super.image = 'testainers/httpbucket',
+    super.tag = '0.0.3',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
     super.detached = true,

@@ -34,9 +34,6 @@ void main() {
       final dynamic getCommand = await command.get(key);
 
       expect(getCommand, value);
-
-      print(setCommand.runtimeType);
-      print(setCommand);
     });
 
     ///

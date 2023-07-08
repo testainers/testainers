@@ -1,7 +1,9 @@
-## 0.0.6
+## 0.0.6 - 2023-07-08
 
+- Adding httpbucket container.
 - Adding all attributes to predefined containers.
 - Creating tests for scratch testainers.
+- Creating tests for TestainersConfig.
 
 ## 0.0.5 - 2023-07-05
 

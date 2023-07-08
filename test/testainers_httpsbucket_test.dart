@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:http/http.dart';
 import 'package:test/test.dart';
 import 'package:testainers/testainers.dart';
 
@@ -22,9 +23,20 @@ void main() {
     });
 
     ///
-    test('First Test', () async {
+    test('Http Test', () async {
+      final Response response = await get(
+        Uri.parse('http://localhost:${container.httpPort}/methods'),
+      );
+
+      expect(response.statusCode, 200);
+      expect(response.headers, isNotEmpty);
+      expect(response.body, isNotEmpty);
+    });
+
+    ///
+    test('Https Test', () async {
       final HttpClientResponse response = await httpService
-          .get(Uri.parse('http://localhost:${container.httpPort}/methods'));
+          .get(Uri.parse('https://localhost:${container.httpsPort}/methods'));
 
       expect(response.statusCode, 200);
       expect(response.contentLength, greaterThan(0));
