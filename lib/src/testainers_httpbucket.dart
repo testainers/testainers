@@ -17,7 +17,7 @@ class TestainersHttpbucket extends Testainers {
     super.config,
     super.name,
     super.image = 'testainers/httpbucket',
-    super.tag = '0.0.3',
+    super.tag = 'latest',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
     super.detached = true,
