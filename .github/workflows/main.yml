@@ -73,7 +73,7 @@ jobs:
         run: |
           genhtml coverage/lcov.info \
             --output-directory coverage/html/coverage \
-            --title "curt" \
+            --title "testainers" \
             --show-details
 
       - name: Creating package filter.
