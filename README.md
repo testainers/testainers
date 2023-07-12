@@ -3,11 +3,11 @@
 Testainers
 </h1>
 
-[![BuildWithLove](https://img.shields.io/badge/%20built%20with-%20%E2%9D%A4-ff69b4.svg "build with love")](https://github.com/edufolly/testainers/stargazers)
-[![pub package](https://img.shields.io/pub/v/testainers?include_prereleases.svg "Pub package")](https://pub.dev/packages/testainers)
-[![Licence](https://img.shields.io/github/license/edufolly/testainers?color=blue "Licence")](https://github.com/edufolly/testainers/blob/main/LICENSE)
-[![Build](https://img.shields.io/github/actions/workflow/status/edufolly/testainers/main.yml?branch=main "Build")](https://github.com/edufolly/testainers/releases/latest)
-[![Coverage Report](https://img.shields.io/badge/coverage-report-C08EA1 "Coverage Report")](https://edufolly.github.io/testainers/coverage/)
+[![Build With Love](https://img.shields.io/badge/%20built%20with-%20%E2%9D%A4-ff69b4.svg)](https://github.com/edufolly/testainers/stargazers)
+[![Version](https://img.shields.io/pub/v/testainers?color=orange)](https://pub.dev/packages/testainers)
+[![Licence](https://img.shields.io/github/license/edufolly/testainers?color=blue)](https://github.com/edufolly/testainers/blob/main/LICENSE)
+[![Build](https://img.shields.io/github/actions/workflow/status/edufolly/testainers/main.yml?branch=main)](https://github.com/edufolly/testainers/releases/latest)
+[![Coverage Report](https://img.shields.io/badge/coverage-report-C08EA1)](https://edufolly.github.io/testainers/coverage/)
 
 Testainers is a powerful Dart plugin designed to streamline the management of
 containers for testing purposes. With Testainers, developers can effortlessly
