@@ -1,3 +1,7 @@
+## 0.0.7 - 2023-07-17
+
+- Exposing TestainersUtils.
+
 ## 0.0.6 - 2023-07-08
 
 - Adding httpbucket container.
