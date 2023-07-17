@@ -3,13 +3,11 @@
 Testainers
 </h1>
 
----
-
-[![BuildWithLove](https://img.shields.io/badge/%20built%20with-%20%E2%9D%A4-ff69b4.svg "build with love")](https://github.com/edufolly/testainers/stargazers)
-[![pub package](https://img.shields.io/pub/v/testainers?include_prereleases.svg "Pub package")](https://pub.dev/packages/testainers)
-[![Licence](https://img.shields.io/github/license/edufolly/testainers?color=blue "Licence")](https://github.com/edufolly/testainers)
-[![Build](https://img.shields.io/github/actions/workflow/status/edufolly/testainers/main.yml?branch=main "Build")](https://github.com/edufolly/testainers)
-[![Coverage Report](https://img.shields.io/badge/coverage-report-C08EA1 "Coverage Report")](https://edufolly.github.io/testainers/coverage/)
+[![Build With Love](https://img.shields.io/badge/%20built%20with-%20%E2%9D%A4-ff69b4.svg)](https://github.com/edufolly/testainers/stargazers)
+[![Version](https://img.shields.io/pub/v/testainers?color=orange)](https://pub.dev/packages/testainers)
+[![Licence](https://img.shields.io/github/license/edufolly/testainers?color=blue)](https://github.com/edufolly/testainers/blob/main/LICENSE)
+[![Build](https://img.shields.io/github/actions/workflow/status/edufolly/testainers/main.yml?branch=main)](https://github.com/edufolly/testainers/releases/latest)
+[![Coverage Report](https://img.shields.io/badge/coverage-report-C08EA1)](https://edufolly.github.io/testainers/coverage/)
 
 Testainers is a powerful Dart plugin designed to streamline the management of
 containers for testing purposes. With Testainers, developers can effortlessly
@@ -28,8 +26,8 @@ containerized testing.
 ## Funding
 
 Your contribution will help drive the development of quality tools for the
-Flutter and Dart developer community. Any amount will be appreciated. Thank you
-for your continued support!
+Flutter and Dart developer community. Any amount will be appreciated.
+Thank you for your continued support!
 
 [![BuyMeACoffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/edufolly)
 
@@ -37,7 +35,8 @@ for your continued support!
 
 Sua contribuição ajudará a impulsionar o desenvolvimento de ferramentas de
 qualidade para a comunidade de desenvolvedores Flutter e Dart. Qualquer quantia
-será apreciada. Obrigado pelo seu apoio contínuo!
+será apreciada.
+Obrigado pelo seu apoio contínuo!
 
 [![PIX](helpers/pix.png)](https://nubank.com.br/pagar/2bt2q/RBr4Szfuwr)
 

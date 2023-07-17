@@ -193,7 +193,7 @@ void main() {
       }
     });
 
-    test('Empty tag', () async {
+    test('Unknown tag', () async {
       const String image = 'caddy';
       const String tag = 'unknown';
 
