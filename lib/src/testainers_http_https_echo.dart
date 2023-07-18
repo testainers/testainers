@@ -22,6 +22,7 @@ class TestainersHttpHttpsEcho extends Testainers {
     super.env = const <String, String>{},
     super.detached = true,
     super.remove = true,
+    super.links = const <String>[],
     super.healthCmd,
     super.healthInterval,
     super.healthRetries,

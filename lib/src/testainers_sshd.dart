@@ -24,6 +24,7 @@ class TestainersSshd extends Testainers {
     super.env = const <String, String>{},
     super.detached = true,
     super.remove = true,
+    super.links = const <String>[],
     super.healthCmd = r'sshpass -p "$SSHD_PASSWORD" ssh '
         '-o StrictHostKeyChecking=no '
         '-o UserKnownHostsFile=/dev/null '

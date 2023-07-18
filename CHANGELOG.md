@@ -1,3 +1,7 @@
+## 0.0.8 - 2023-07-18
+
+- Adding link option to containers.
+
 ## 0.0.7 - 2023-07-17
 
 - Exposing TestainersUtils.

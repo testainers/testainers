@@ -24,6 +24,7 @@ class TestainersMongodb extends Testainers {
     super.env = const <String, String>{},
     super.detached = true,
     super.remove = true,
+    super.links = const <String>[],
     super.healthCmd = 'echo \'db.runCommand("ping").ok\' | '
         'mongosh localhost:27017/test --quiet',
     super.healthInterval = 5,
