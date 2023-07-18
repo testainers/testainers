@@ -17,6 +17,7 @@ class Testainers {
   final Map<String, String> env;
   final bool detached;
   final bool remove;
+  final List<String> links;
   final String healthCmd;
   final int healthInterval;
   final int healthRetries;
@@ -36,6 +37,7 @@ class Testainers {
     required this.env,
     required this.detached,
     required this.remove,
+    this.links = const <String>[],
     this.healthCmd = '',
     this.healthInterval = 0,
     this.healthRetries = 0,
@@ -124,6 +126,14 @@ class Testainers {
       arguments
         ..add('-e')
         ..add('${entry.key}=${entry.value}');
+    }
+
+    for (final String link in links) {
+      if (link.isNotEmpty) {
+        arguments
+          ..add('--link')
+          ..add(link);
+      }
     }
 
     if (healthCmd.isNotEmpty) {
