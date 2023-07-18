@@ -62,6 +62,11 @@ class Testainers {
   ///
   ///
   ///
+  Future<List<String>> linksFilter(List<String> links) async => links;
+
+  ///
+  ///
+  ///
   Future<String> start({Duration? bootSleep}) async {
     if (config.runner.isEmpty) {
       throw TestainersException('Runner not defined.');
@@ -98,6 +103,8 @@ class Testainers {
 
     final Map<String, String> effectiveEnv = await envFilter(env);
 
+    final List<String> effectiveLinks = await linksFilter(links);
+
     final List<String> arguments = <String>[
       'run',
       if (detached) '-d',
@@ -128,7 +135,7 @@ class Testainers {
         ..add('${entry.key}=${entry.value}');
     }
 
-    for (final String link in links) {
+    for (final String link in effectiveLinks) {
       if (link.isNotEmpty) {
         arguments
           ..add('--link')
