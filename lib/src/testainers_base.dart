@@ -3,14 +3,13 @@ import 'dart:io';
 
 import 'package:testainers/src/testainers_config.dart';
 import 'package:testainers/src/testainers_exception.dart';
+import 'package:testainers/src/testainers_network.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
 ///
 ///
 ///
 class Testainers {
-  final TestainersConfig config;
-  final String name;
   final String image;
   final String tag;
   final Map<int, int> ports;
@@ -18,6 +17,7 @@ class Testainers {
   final bool detached;
   final bool remove;
   final List<String> links;
+  final List<TestainersNetwork> networks;
   final String healthCmd;
   final int healthInterval;
   final int healthRetries;
@@ -25,6 +25,8 @@ class Testainers {
   final int healthStartPeriod;
   final bool noHealthcheck;
   final int stopTime;
+  final TestainersConfig config;
+  final String name;
   String? id;
 
   ///
@@ -38,6 +40,7 @@ class Testainers {
     required this.detached,
     required this.remove,
     this.links = const <String>[],
+    this.networks = const <TestainersNetwork>[],
     this.healthCmd = '',
     this.healthInterval = 0,
     this.healthRetries = 0,
@@ -67,6 +70,14 @@ class Testainers {
   ///
   ///
   ///
+  Future<List<TestainersNetwork>> networksFilter(
+    List<TestainersNetwork> networks,
+  ) async =>
+      networks;
+
+  ///
+  ///
+  ///
   Future<String> start({Duration? bootSleep}) async {
     if (config.runner.isEmpty) {
       throw TestainersException('Runner not defined.');
@@ -88,22 +99,7 @@ class Testainers {
       throw TestainersException('Tag not defined.');
     }
 
-    ProcessResult result = await Process.run(config.runner, <String>[
-      '--version',
-    ]).timeout(config.timeout);
-
-    if (result.exitCode != 0) {
-      throw TestainersException(
-        'Runner ${config.runner} not found.',
-        reason: result.stderr,
-      );
-    }
-
-    final Map<int, int> effectivePorts = await portsFilter(ports);
-
-    final Map<String, String> effectiveEnv = await envFilter(env);
-
-    final List<String> effectiveLinks = await linksFilter(links);
+    await config.runnerVersion();
 
     final List<String> arguments = <String>[
       'run',
@@ -112,6 +108,8 @@ class Testainers {
       '--name',
       name,
     ];
+
+    final Map<int, int> effectivePorts = await portsFilter(ports);
 
     for (final MapEntry<int, int> entry in effectivePorts.entries) {
       /// Zero is a docker random port.
@@ -129,18 +127,26 @@ class Testainers {
         ..add('${entry.key}:${entry.value}');
     }
 
+    final Map<String, String> effectiveEnv = await envFilter(env);
+
     for (final MapEntry<String, String> entry in effectiveEnv.entries) {
       arguments
         ..add('-e')
         ..add('${entry.key}=${entry.value}');
     }
 
-    for (final String link in effectiveLinks) {
+    for (final String link in await linksFilter(links)) {
       if (link.isNotEmpty) {
         arguments
           ..add('--link')
           ..add(link);
       }
+    }
+
+    for (final TestainersNetwork network in await networksFilter(networks)) {
+      arguments
+        ..add('--network')
+        ..add(network.name);
     }
 
     if (healthCmd.isNotEmpty) {
@@ -169,23 +175,10 @@ class Testainers {
 
     arguments.add('$image:$tag');
 
-    if (config.debug) {
-      print('${config.runner} ${arguments.join(' ')}');
-    }
-
-    result = await Process.run(
-      config.runner,
-      arguments,
-    ).timeout(config.timeout);
-
-    if (result.exitCode != 0) {
-      throw TestainersException(
-        'Container $name with image $image:$tag not started.',
-        reason: result.stderr,
-      );
-    }
-
-    id = result.stdout.toString().trim();
+    id = await config.exec(
+      arguments: arguments,
+      exceptionExec: 'Container $name with image $image:$tag not started.',
+    );
 
     if (healthCmd.isEmpty || noHealthcheck) {
       await Future<void>.delayed(bootSleep ?? config.bootSleep);
@@ -197,28 +190,21 @@ class Testainers {
       while (healthStatus == 'starting') {
         await Future<void>.delayed(const Duration(seconds: 1));
 
-        result = await Process.run(
-          config.runner,
-          <String>[
+        final String inspectString = await config.exec(
+          arguments: <String>[
             'inspect',
             "--format='{{json .State.Health}}'",
             name,
           ],
-        ).timeout(config.timeout);
-
-        if (result.exitCode != 0) {
-          throw TestainersException(
-            'Container $name with image $image:$tag could not be inspected.',
-            reason: result.stderr,
-          );
-        }
-
-        final String inspectString = result.stdout.toString().trim();
+          exceptionExec: 'Container $name with image $image:$tag '
+              'could not be inspected.',
+        );
 
         inspectMap =
             jsonDecode(inspectString.substring(1, inspectString.length - 1));
 
         if (config.debug) {
+          // ignore: avoid_print
           print('Inspect: $inspectMap');
         }
 
@@ -240,11 +226,16 @@ class Testainers {
   ///
   ///
   Future<void> stop() async {
-    final ProcessResult result = await Process.run(config.runner, <String>[
+    final List<String> arguments = <String>[
       'stop',
       if (stopTime > 0) ...<String>['--time', '$stopTime'],
       name,
-    ]).timeout(config.timeout);
+    ];
+
+    final ProcessResult result = await Process.run(
+      config.runner,
+      arguments,
+    ).timeout(config.timeout);
 
     if (result.exitCode != 0) {
       throw TestainersException(

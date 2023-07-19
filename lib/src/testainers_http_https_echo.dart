@@ -1,4 +1,5 @@
 import 'package:testainers/src/testainers_base.dart';
+import 'package:testainers/src/testainers_network.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
 ///
@@ -23,6 +24,7 @@ class TestainersHttpHttpsEcho extends Testainers {
     super.detached = true,
     super.remove = true,
     super.links = const <String>[],
+    super.networks = const <TestainersNetwork>[],
     super.healthCmd,
     super.healthInterval,
     super.healthRetries,

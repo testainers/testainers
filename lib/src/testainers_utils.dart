@@ -8,6 +8,77 @@ class TestainersUtils {
   ///
   ///
   ///
+  static Map<String, String> loadEnv({
+    String envFile = '.env',
+    bool mergeWithPlatform = true,
+  }) {
+    final Map<String, String> env = <String, String>{};
+
+    final File file = File(envFile);
+
+    if (file.existsSync()) {
+      final List<String> lines = file.readAsLinesSync();
+
+      for (int i = 0; i < lines.length; i++) {
+        final String line = lines[i];
+
+        if(line.trim().startsWith('#')) {
+          continue;
+        }
+
+        final List<String> parts = line.split('=');
+
+        if (parts.length < 2) {
+          continue;
+        }
+
+        if (parts.first.isEmpty) {
+          continue;
+        }
+
+        String value = parts.getRange(1, parts.length).join('=');
+
+        if (value.isEmpty) {
+          continue;
+        }
+
+        if (value.trim().startsWith('"')) {
+          final StringBuffer buffer = StringBuffer(value);
+
+          while (!buffer.toString().trim().endsWith('"')) {
+            i++;
+
+            if (i >= lines.length) {
+              buffer.write('"');
+              continue;
+            }
+
+            buffer
+              ..write('\n')
+              ..write(lines[i]);
+          }
+
+          value = buffer.toString().trim();
+
+          value = value.substring(1, value.length - 1).replaceAll(r'\n', '\n');
+        } else {
+          value = value.trim();
+        }
+
+        env[parts.first.trim()] = value;
+      }
+    }
+
+    if (mergeWithPlatform) {
+      env.addAll(Platform.environment);
+    }
+
+    return env;
+  }
+
+  ///
+  ///
+  ///
   static Future<int> generatePort({InternetAddress? address}) async {
     final RawServerSocket socket =
         await RawServerSocket.bind(address ?? InternetAddress.loopbackIPv4, 0);

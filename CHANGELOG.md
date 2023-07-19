@@ -1,6 +1,12 @@
+## 0.0.9
+
+- Adding dotenv file parser.
+- Adding TestainersNetwork.
+- Adding networks option to containers.
+
 ## 0.0.8 - 2023-07-18
 
-- Adding link option to containers.
+- Adding links option to containers.
 
 ## 0.0.7 - 2023-07-17
 
