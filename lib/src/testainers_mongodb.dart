@@ -1,4 +1,5 @@
 import 'package:testainers/src/testainers_base.dart';
+import 'package:testainers/src/testainers_network.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
 ///
@@ -25,6 +26,7 @@ class TestainersMongodb extends Testainers {
     super.detached = true,
     super.remove = true,
     super.links = const <String>[],
+    super.networks = const <TestainersNetwork>[],
     super.healthCmd = 'echo \'db.runCommand("ping").ok\' | '
         'mongosh localhost:27017/test --quiet',
     super.healthInterval = 5,
