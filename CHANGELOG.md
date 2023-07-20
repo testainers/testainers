@@ -1,4 +1,8 @@
-## 0.0.9
+## 0.0.10 - 2023-07-20
+
+- Adding postgresql container.
+
+## 0.0.9 - 2023-07-19
 
 - Adding dotenv file parser.
 - Adding TestainersNetwork.
