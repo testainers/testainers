@@ -1,13 +1,12 @@
 import 'package:testainers/src/testainers_base.dart';
-import 'package:testainers/src/testainers_network.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
 ///
 ///
 ///
 class TestainersSshd extends Testainers {
-  String? _username;
-  String? _password;
+  final String? _username;
+  final String? _password;
   int? _port;
 
   ///
@@ -25,8 +24,8 @@ class TestainersSshd extends Testainers {
     super.env = const <String, String>{},
     super.detached = true,
     super.remove = true,
-    super.links = const <String>[],
-    super.networks = const <TestainersNetwork>[],
+    super.links,
+    super.networks,
     super.healthCmd = r'sshpass -p "$SSHD_PASSWORD" ssh '
         '-o StrictHostKeyChecking=no '
         '-o UserKnownHostsFile=/dev/null '
@@ -45,12 +44,12 @@ class TestainersSshd extends Testainers {
   ///
   ///
   ///
-  String get username => _username ?? '';
+  String get username => _username ?? config.defaultUsername;
 
   ///
   ///
   ///
-  String get password => _password ?? '';
+  String get password => _password ?? config.defaultPassword;
 
   ///
   ///
@@ -70,13 +69,10 @@ class TestainersSshd extends Testainers {
   ///
   ///
   @override
-  Future<Map<String, String>> envFilter(Map<String, String> env) async {
-    _username ??= config.defaultUsername;
-    _password ??= config.defaultPassword;
-    return <String, String>{
-      ...env,
-      'SSHD_USER': _username!,
-      'SSHD_PASSWORD': _password!,
-    };
-  }
+  Future<Map<String, String>> envFilter(Map<String, String> env) async =>
+      <String, String>{
+        ...env,
+        'SSHD_USER': username,
+        'SSHD_PASSWORD': password,
+      };
 }
