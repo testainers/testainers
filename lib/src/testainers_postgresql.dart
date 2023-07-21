@@ -18,15 +18,16 @@ class TestainersPostgresql extends Testainers {
     String? password,
     String? database,
     int? port,
+    super.config,
     super.name,
+    super.image = 'postgres',
+    super.tag = '13.3',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
     super.detached = true,
     super.remove = true,
     super.links,
     super.networks,
-    super.image = 'postgres',
-    super.tag = '13.3',
     super.healthCmd = 'pg_isready -U postgres',
     super.healthInterval = 5,
     super.healthRetries = 2,
@@ -59,6 +60,9 @@ class TestainersPostgresql extends Testainers {
   ///
   int get port => _port ?? -1;
 
+  ///
+  ///
+  ///
   @override
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _port ??= await TestainersUtils.generatePort();
