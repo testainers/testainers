@@ -10,6 +10,7 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: write
+      id-token: write
     steps:
       - name: Code Checkout
         uses: actions/checkout@v4
@@ -72,6 +73,9 @@ jobs:
 
       - name: Creating package filter.
         run: dart run helpers/create_index.dart README.md coverage/html/index.html
+
+      - name: Publish to pub.dev
+        run: dart pub publish -f
 
       - name: Publishing to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
