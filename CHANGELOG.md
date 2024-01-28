@@ -1,4 +1,8 @@
-## 0.0.10 - 2023-07-20
+## 0.1.0 - 2024-01-28
+
+- Testing publish workflow.
+
+## 0.0.10 - 2024-01-28
 
 - Adding postgresql container.
 
