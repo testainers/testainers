@@ -26,11 +26,14 @@ jobs:
             exit 1
           fi
 
-      - name: Flutter Environment
-        uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-          cache: false
+#      - name: Flutter Environment
+#        uses: subosito/flutter-action@v2
+#        with:
+#          channel: 'stable'
+#          cache: false
+
+      - name: Dart Environment
+        uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
 
       - name: Install lcov
         env:
