@@ -1,5 +1,5 @@
 <h1>
-<img src="helpers/testainers-100.png" alt="Testainers" title="Testainers">
+<img src="https://testainers.com/assets/assets/images/testainers-80.png" alt="Testainers" title="Testainers">
 Testainers
 </h1>
 

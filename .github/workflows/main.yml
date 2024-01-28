@@ -88,13 +88,13 @@ jobs:
       - name: Creating package filter.
         run: dart run helpers/create_index.dart README.md coverage/html/index.html
 
-      - name: Publish Dart Package
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
-          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
-          skipTests: true
-          format: true
+#      - name: Publish Dart Package
+#        uses: k-paxian/dart-package-publisher@master
+#        with:
+#          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
+#          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+#          skipTests: true
+#          format: true
 
       - name: Publishing to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
