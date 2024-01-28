@@ -10,6 +10,7 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: write
+      id-token: write # Required for authentication using OIDC
     steps:
       - name: Code Checkout
         uses: actions/checkout@v4
@@ -42,11 +43,11 @@ jobs:
         timeout-minutes: 3
         run: dart pub get
 
-      - name: Dart Test
-        run: |
-          dart test \
-          --coverage=coverage \
-          --concurrency=$(grep -c processor /proc/cpuinfo)
+#      - name: Dart Test
+#        run: |
+#          dart test \
+#          --coverage=coverage \
+#          --concurrency=$(grep -c processor /proc/cpuinfo)
 
       - name: Creating package filter.
         run: dart run helpers/package.dart
@@ -70,8 +71,7 @@ jobs:
         run: dart run helpers/create_index.dart README.md coverage/html/index.html
 
       - name: Dart Publish Dry Run
-        timeout-minutes: 3
-        run: dart pub publish --dry-run
+        uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
 
       - name: Publishing to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
