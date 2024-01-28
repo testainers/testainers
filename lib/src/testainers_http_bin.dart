@@ -1,5 +1,4 @@
 import 'package:testainers/src/testainers_base.dart';
-import 'package:testainers/src/testainers_network.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
 ///
@@ -21,8 +20,8 @@ class TestainersHttpBin extends Testainers {
     super.env = const <String, String>{},
     super.detached = true,
     super.remove = true,
-    super.links = const <String>[],
-    super.networks = const <TestainersNetwork>[],
+    super.links,
+    super.networks,
     super.healthCmd,
     super.healthInterval,
     super.healthRetries,

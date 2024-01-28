@@ -65,4 +65,12 @@ void main() {
       expect(env, isEmpty);
     });
   });
+
+  ///
+  group('generateName', () {
+    test('returns a string with two words separated by a hyphen', () {
+      final String name = TestainersUtils.generateName();
+      expect(name, matches(RegExp(r'^\w+-\w+$')));
+    });
+  });
 }

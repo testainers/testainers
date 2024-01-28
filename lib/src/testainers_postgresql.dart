@@ -4,30 +4,31 @@ import 'package:testainers/src/testainers_utils.dart';
 ///
 ///
 ///
-class TestainersMongodb extends Testainers {
+class TestainersPostgresql extends Testainers {
   final String? _username;
   final String? _password;
+  final String? _database;
   int? _port;
 
   ///
   ///
   ///
-  TestainersMongodb({
+  TestainersPostgresql({
     String? username,
     String? password,
+    String? database,
     int? port,
     super.config,
     super.name,
-    super.image = 'mongo',
-    super.tag = '6.0.6',
+    super.image = 'postgres',
+    super.tag = '13.3',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
     super.detached = true,
     super.remove = true,
     super.links,
     super.networks,
-    super.healthCmd = 'echo \'db.runCommand("ping").ok\' | '
-        'mongosh localhost:27017/test --quiet',
+    super.healthCmd = 'pg_isready -U postgres',
     super.healthInterval = 5,
     super.healthRetries = 2,
     super.healthTimeout = 3,
@@ -36,6 +37,7 @@ class TestainersMongodb extends Testainers {
     super.stopTime,
   })  : _username = username,
         _password = password,
+        _database = database,
         _port = port;
 
   ///
@@ -51,6 +53,11 @@ class TestainersMongodb extends Testainers {
   ///
   ///
   ///
+  String get database => _database ?? config.defaultUsername;
+
+  ///
+  ///
+  ///
   int get port => _port ?? -1;
 
   ///
@@ -59,7 +66,7 @@ class TestainersMongodb extends Testainers {
   @override
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _port ??= await TestainersUtils.generatePort();
-    return <int, int>{...ports, _port!: 27017};
+    return <int, int>{...ports, _port!: 5432};
   }
 
   ///
@@ -69,7 +76,8 @@ class TestainersMongodb extends Testainers {
   Future<Map<String, String>> envFilter(Map<String, String> env) async =>
       <String, String>{
         ...env,
-        'MONGO_INITDB_ROOT_USERNAME': username,
-        'MONGO_INITDB_ROOT_PASSWORD': password,
+        'POSTGRES_USER': username,
+        'POSTGRES_PASSWORD': password,
+        'POSTGRES_DB': database,
       };
 }
