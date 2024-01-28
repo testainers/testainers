@@ -66,6 +66,11 @@ class TestainersConfig {
       throw TestainersException(exceptionExec, reason: result.stderr);
     }
 
+    if (debug) {
+      // ignore: avoid_print
+      print(result.stdout);
+    }
+
     return result;
   }
 

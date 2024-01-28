@@ -30,7 +30,7 @@ void main() {
         '${container.username}:'
         '${container.password}@'
         'localhost:${container.port}'
-        '/testainers?authSource=admin',
+        '/testainers?tls=false&authSource=admin',
       );
 
       await db.open();

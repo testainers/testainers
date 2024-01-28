@@ -18,10 +18,10 @@ class TestainersHttpbucket extends Testainers {
     super.name,
     super.image = 'testainers/httpbucket',
     super.tag = 'latest',
-    super.ports = const <int, int>{},
-    super.env = const <String, String>{},
-    super.detached = true,
-    super.remove = true,
+    super.ports,
+    super.env,
+    super.detached,
+    super.remove,
     super.links,
     super.networks,
     super.healthCmd,
@@ -51,7 +51,7 @@ class TestainersHttpbucket extends Testainers {
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _httpPort ??= await TestainersUtils.generatePort();
     _httpsPort ??= await TestainersUtils.generatePort();
-    
+
     return <int, int>{
       ...ports,
       _httpPort!: 8080,

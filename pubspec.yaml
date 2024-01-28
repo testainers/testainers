@@ -8,11 +8,16 @@ environment:
   sdk: ^3.0.0
 
 dev_dependencies:
+  logging: ^1.2.0
+
   # https://pub.dev/packages/coverage
   coverage: ^1.7.2
 
   # https://pub.dev/packages/dartssh2
   dartssh2: ^2.8.2
+
+  # https://pub.dev/packages/kafkabr
+  kafkabr: ^1.1.1
 
   # https://pub.dev/packages/http
   http: ^1.2.0
