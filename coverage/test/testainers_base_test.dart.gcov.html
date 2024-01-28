@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-07-19 21:52:50</td>
+            <td class="headerValue">2024-01-28 17:05:26</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -94,7 +94,7 @@
 <a name="32"><span class="lineNum">      32 </span>            :     ///</a>
 <a name="33"><span class="lineNum">      33 </span><span class="lineCov">          2 :     test('First Test', () async {</span></a>
 <a name="34"><span class="lineNum">      34 </span>            :       final Response response =</a>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          3 :           await get(Uri.parse('http://localhost:$httpPort'));</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          2 :           await get(Uri.parse('http://localhost:$httpPort'));</span></a>
 <a name="36"><span class="lineNum">      36 </span>            : </a>
 <a name="37"><span class="lineNum">      37 </span><span class="lineCov">          2 :       expect(response.statusCode, 200);</span></a>
 <a name="38"><span class="lineNum">      38 </span><span class="lineCov">          2 :       expect(response.headers, isNotEmpty);</span></a>
@@ -229,7 +229,7 @@
 <a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :         fail('Should throw an exception');</span></a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineCov">          1 :       } on Exception catch (e) {</span></a>
 <a name="169"><span class="lineNum">     169 </span><span class="lineCov">          2 :         expect(e, isA&lt;TestainersException&gt;());</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          4 :         expect(e.toString(), contains('$image:$tag not started.'));</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          3 :         expect(e.toString(), contains('$image:$tag not started.'));</span></a>
 <a name="171"><span class="lineNum">     171 </span>            :       }</a>
 <a name="172"><span class="lineNum">     172 </span>            :     });</a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
@@ -273,7 +273,7 @@
 <a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :         fail('Should throw an exception');</span></a>
 <a name="212"><span class="lineNum">     212 </span><span class="lineCov">          1 :       } on Exception catch (e) {</span></a>
 <a name="213"><span class="lineNum">     213 </span><span class="lineCov">          2 :         expect(e, isA&lt;TestainersException&gt;());</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          4 :         expect(e.toString(), contains(&quot;Unable to find image '$image:$tag'&quot;));</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          3 :         expect(e.toString(), contains(&quot;Unable to find image '$image:$tag'&quot;));</span></a>
 <a name="215"><span class="lineNum">     215 </span>            :       }</a>
 <a name="216"><span class="lineNum">     216 </span>            :     });</a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
