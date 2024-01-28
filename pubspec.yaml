@@ -27,7 +27,6 @@ dev_dependencies:
   mongo_dart: ^0.10.0
 
   # https://pub.dev/packages/postgres
-  # postgres: ^2.6.1
   postgres: ^3.0.7
 
   # https://pub.dev/packages/redis

@@ -12,26 +12,29 @@ void main() {
   group('Test Postgresql', () {
     final TestainersPostgresql container = TestainersPostgresql();
 
-    late final PostgreSQLConnection connection;
+    late final Connection connection;
 
     ///
     setUpAll(() async {
       await container.start();
 
-      connection = PostgreSQLConnection(
-        'localhost',
-        container.port,
-        container.database,
-        username: container.username,
-        password: container.password,
+      connection = await Connection.open(
+        settings: const ConnectionSettings(
+          sslMode: SslMode.disable,
+        ),
+        Endpoint(
+          host: 'localhost',
+          port: container.port,
+          database: container.database,
+          username: container.username,
+          password: container.password,
+        ),
       );
-
-      await connection.open();
     });
 
     ///
     test('should connect to the database', () async {
-      final PostgreSQLResult result = await connection.query('SELECT 1');
+      final Result result = await connection.execute('SELECT 1');
       expect(result, isNotNull);
       expect(result, isNotEmpty);
       expect(result[0][0], 1);
@@ -43,23 +46,29 @@ void main() {
         'CREATE TABLE test (id SERIAL PRIMARY KEY, name VARCHAR(99) NOT NULL);',
       );
 
-      final PostgreSQLResult result = await connection.query(
+      final Result result = await connection.execute(
         "INSERT INTO test (name) VALUES ('test') RETURNING id, name",
       );
 
-      expect(result.affectedRowCount, 1);
+      expect(result.affectedRows, 1);
 
-      expect(result, <dynamic>[
-        <dynamic>[1, 'test']
-      ]);
+      expect(
+        result,
+        <dynamic>[
+          <dynamic>[1, 'test'],
+        ],
+      );
     });
 
     test('delete the inserted row and drop the created table', () async {
-      final PostgreSQLResult result = await connection.query(
-        'DELETE FROM test WHERE id = 1',
+      final Result result = await connection.execute(
+        Sql.named('DELETE FROM test WHERE id = @id'),
+        parameters: <String, dynamic>{
+          'id': 1,
+        },
       );
 
-      expect(result.affectedRowCount, 1);
+      expect(result.affectedRows, 1);
 
       await connection.execute('DROP TABLE test');
     });

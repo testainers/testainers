@@ -4,27 +4,20 @@ on:
     branches: [ main ]
 
 jobs:
-  ########
-  # Boot #
-  ########
-  boot:
-    name: Boot
+  build:
+    name: Tests, Build & Deploy
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    outputs:
-      version: ${{ steps.version-step.outputs.version }}
+    timeout-minutes: 20
+    permissions:
+      contents: write
     steps:
       - name: Code Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get Pubspec Version
-        id: version-step
         run: |
-          export VERSION=$(grep 'version:' pubspec.yaml | cut -c 10- | cut -f 1 -d '+')
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-
-      - name: Check if version is used
-        run: |
+          VERSION=$(grep 'version:' pubspec.yaml | cut -c 10- | cut -f 1 -d '+')${{ env.SUFFIX }}
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
           URL=$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases/latest
           LATEST=$(curl --silent "$URL" | jq -r .name)
           if [ "$LATEST" == "v$VERSION" ]; then
@@ -32,26 +25,11 @@ jobs:
             exit 1
           fi
 
-
-  ###################
-  # Tests & Release #
-  ###################
-  tests:
-    name: Tests & Release
-    needs: [ boot ]
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    permissions:
-      contents: write
-    steps:
-      - name: Code Checkout
-        uses: actions/checkout@v3
-
       - name: Flutter Environment
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-          cache: true
+          cache: false
 
       - name: Install lcov
         env:
@@ -65,7 +43,10 @@ jobs:
         run: dart pub get
 
       - name: Dart Test
-        run: dart test --coverage=coverage
+        run: |
+          dart test \
+          --coverage=coverage \
+          --concurrency=$(grep -c processor /proc/cpuinfo)
 
       - name: Creating package filter.
         run: dart run helpers/package.dart
@@ -105,11 +86,11 @@ jobs:
       - name: Creating a GitHub Tag
         uses: mathieudutour/github-tag-action@v6.1
         with:
-          custom_tag: ${{ needs.boot.outputs.version }}
+          custom_tag: ${{ env.VERSION }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create a GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          tag: v${{ needs.boot.outputs.version }}
+          tag: v${{ env.VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
