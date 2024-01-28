@@ -83,10 +83,9 @@ void main() {
 
 ## Available Containers
 
-Open an issue to request a new container.
+### Open an issue to request a new container.
 
-
-| Service         | Image                                              | Version | Status |
+| Container       | Image                                              | Version | Status |
 |-----------------|----------------------------------------------------|:-------:|:------:| 
 | postgresql      | https://hub.docker.com/_/postgres                  | v0.0.10 |   ✅    |
 | httpbucket      | https://hub.docker.com/r/testainers/httpbucket     | v0.0.6  |   ✅    |
