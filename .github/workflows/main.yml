@@ -17,7 +17,7 @@ jobs:
 
       - name: Get Pubspec Version
         run: |
-          VERSION=$(grep 'version:' pubspec.yaml | cut -c 10- | cut -f 1 -d '+')${{ env.SUFFIX }}
+          VERSION=$(grep 'version:' pubspec.yaml | cut -c 10- | cut -f 1 -d '+')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           URL=$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases/latest
           LATEST=$(curl --silent "$URL" | jq -r .name)
@@ -26,14 +26,11 @@ jobs:
             exit 1
           fi
 
-#      - name: Flutter Environment
-#        uses: subosito/flutter-action@v2
-#        with:
-#          channel: 'stable'
-#          cache: false
-
-      - name: Dart Environment
-        uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
+      - name: Flutter Environment
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: false
 
       - name: Install lcov
         env:
@@ -45,10 +42,6 @@ jobs:
       - name: Dart Pub Get
         timeout-minutes: 3
         run: dart pub get
-
-      - name: Dart Publish Dry Run
-        timeout-minutes: 3
-        run: dart pub publish --dry-run
 
       - name: Dart Test
         run: |
@@ -77,21 +70,19 @@ jobs:
       - name: Creating package filter.
         run: dart run helpers/create_index.dart README.md coverage/html/index.html
 
-      - name: Publish to pub.dev
-        run: dart pub publish -f
+      - name: Publish Dart Package
+        uses: k-paxian/dart-package-publisher@v1.6
+        with:
+          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
+          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+          skipTests: true
+          format: true
 
       - name: Publishing to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_dir: ./coverage/html
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-#      - name: Creating a Tag
-#        run: |
-#          git config --local user.email "testainers@gmail.com"
-#          git config --local user.name "GitHub Actions"
-#          git tag -a v${{ env.VERSION }} -m "Generated tag from GitHub Actions build $GITHUB_RUN_NUMBER"
-#          git push origin v${{ env.VERSION }}
 
       - name: Creating a GitHub Tag
         uses: mathieudutour/github-tag-action@v6.1
