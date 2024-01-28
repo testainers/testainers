@@ -10,7 +10,6 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: write
-      id-token: write # Required for authentication using OIDC
     steps:
       - name: Code Checkout
         uses: actions/checkout@v4
@@ -71,7 +70,7 @@ jobs:
         run: dart run helpers/create_index.dart README.md coverage/html/index.html
 
       - name: Dart Publish Dry Run
-        uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+        run: dart pub publish --dry-run
 
       - name: Publishing to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -90,3 +89,9 @@ jobs:
         with:
           tag: v${{ env.VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  publish:
+    name: Publish
+    permissions:
+      id-token: write # Required for authentication using OIDC
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
