@@ -85,11 +85,14 @@ void main() {
 
 Open an issue to request a new container.
 
-- [X] postgresql - https://hub.docker.com/_/postgres - v0.0.10
-- [X] httpbucket - https://hub.docker.com/r/testainers/httpbucket - v0.0.6
-- [X] redis - https://hub.docker.com/_/redis - v0.0.5
-- [X] sshd - https://hub.docker.com/r/testainers/sshd-container - v0.0.4
-- [x] MongoDB - https://hub.docker.com/_/mongo - v0.0.2
-- [x] httpbin - https://hub.docker.com/r/kennethreitz/httpbin - v0.0.1
-- [x] http-https-echo - https://hub.docker.com/r/mendhak/http-https-echo -
-  v0.0.1
+
+| Service         | Image                                              | Version | Status |
+|-----------------|----------------------------------------------------|:-------:|:------:| 
+| postgresql      | https://hub.docker.com/_/postgres                  | v0.0.10 |   ✅    |
+| httpbucket      | https://hub.docker.com/r/testainers/httpbucket     | v0.0.6  |   ✅    |
+| redis           | https://hub.docker.com/_/redis                     | v0.0.5  |   ✅    |
+| sshd            | https://hub.docker.com/r/testainers/sshd-container | v0.0.4  |   ✅    |
+| MongoDB         | https://hub.docker.com/_/mongo                     | v0.0.2  |   ✅    |
+| httpbin         | https://hub.docker.com/r/kennethreitz/httpbin      | v0.0.1  |   ✅    |
+| http-https-echo | https://hub.docker.com/r/mendhak/http-https-echo   | v0.0.1  |   ✅    |
+
