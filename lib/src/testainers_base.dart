@@ -25,6 +25,7 @@ class Testainers {
   final int healthStartPeriod;
   final bool noHealthcheck;
   final int stopTime;
+  final List<String> command;
   final TestainersConfig config;
   final String name;
   String? id;
@@ -48,6 +49,7 @@ class Testainers {
     this.healthStartPeriod = 0,
     this.noHealthcheck = false,
     this.stopTime = 0,
+    this.command = const <String>[],
     this.config = const TestainersConfig(),
     String? name,
   }) : name = name ?? TestainersUtils.generateName();
@@ -74,6 +76,11 @@ class Testainers {
     List<TestainersNetwork> networks,
   ) async =>
       networks;
+
+  ///
+  ///
+  ///
+  Future<List<String>> commandFilter(List<String> command) async => command;
 
   ///
   ///
@@ -174,6 +181,10 @@ class Testainers {
     }
 
     arguments.add('$image:$tag');
+
+    for (final String command in await commandFilter(this.command)) {
+      arguments.add(command);
+    }
 
     id = await config.exec(
       arguments: arguments,

@@ -3,9 +3,6 @@ name: Pull Request Tests
 on: [pull_request]
 
 jobs:
-  #########
-  # Tests #
-  #########
   tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -13,6 +10,13 @@ jobs:
     steps:
       - name: Code Checkout
         uses: actions/checkout@v4
+
+      - name: Get Pubspec Version
+        run: |
+          VERSION=$(grep 'version:' pubspec.yaml | cut -c 10- | cut -f 1 -d '+')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "REPO=$GITHUB_REPOSITORY" >> $GITHUB_ENV
+          echo "OWNER=$GITHUB_REPOSITORY_OWNER" >> $GITHUB_ENV
 
       - name: Flutter Environment
         uses: subosito/flutter-action@v2
@@ -27,6 +31,12 @@ jobs:
       - name: Dart Analyze
         timeout-minutes: 3
         run: dart analyze --fatal-infos
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.OWNER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Dart Test
         run: dart test
