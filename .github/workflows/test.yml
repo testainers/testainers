@@ -25,5 +25,11 @@ jobs:
         timeout-minutes: 3
         run: dart analyze --fatal-infos
 
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.OWNER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
       - name: Dart Test
         run: dart test
