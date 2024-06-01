@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-13 19:55:54</td>
+            <td class="headerValue">2024-06-01 23:48:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -219,22 +219,22 @@
 <a name="157"><span class="lineNum">     157 </span>            :     }</a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
 <a name="159"><span class="lineNum">     159 </span><span class="lineCov">         16 :     if (healthCmd.isNotEmpty) {</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          9 :       arguments.add('--health-cmd=$healthCmd');</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         12 :       arguments.add('--health-cmd=$healthCmd');</span></a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          6 :       if (healthInterval &gt; 0) {</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          9 :         arguments.add('--health-interval=${healthInterval}s');</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          8 :       if (healthInterval &gt; 0) {</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">         12 :         arguments.add('--health-interval=${healthInterval}s');</span></a>
 <a name="164"><span class="lineNum">     164 </span>            :       }</a>
 <a name="165"><span class="lineNum">     165 </span>            : </a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          6 :       if (healthRetries &gt; 0) {</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          9 :         arguments.add('--health-retries=$healthRetries');</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          8 :       if (healthRetries &gt; 0) {</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         12 :         arguments.add('--health-retries=$healthRetries');</span></a>
 <a name="168"><span class="lineNum">     168 </span>            :       }</a>
 <a name="169"><span class="lineNum">     169 </span>            : </a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          6 :       if (healthTimeout &gt; 0) {</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          9 :         arguments.add('--health-timeout=${healthTimeout}s');</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          8 :       if (healthTimeout &gt; 0) {</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         12 :         arguments.add('--health-timeout=${healthTimeout}s');</span></a>
 <a name="172"><span class="lineNum">     172 </span>            :       }</a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          6 :       if (healthStartPeriod &gt; 0) {</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          9 :         arguments.add('--health-start-period=${healthStartPeriod}s');</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          8 :       if (healthStartPeriod &gt; 0) {</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         12 :         arguments.add('--health-start-period=${healthStartPeriod}s');</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :       }</a>
 <a name="177"><span class="lineNum">     177 </span>            :     }</a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
@@ -253,38 +253,38 @@
 <a name="191"><span class="lineNum">     191 </span><span class="lineCov">         32 :       exceptionExec: 'Container $name with image $image:$tag not started.',</span></a>
 <a name="192"><span class="lineNum">     192 </span>            :     );</a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         19 :     if (healthCmd.isEmpty || noHealthcheck) {</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">         15 :       await Future&lt;void&gt;.delayed(bootSleep ?? config.bootSleep);</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         20 :     if (healthCmd.isEmpty || noHealthcheck) {</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">         12 :       await Future&lt;void&gt;.delayed(bootSleep ?? config.bootSleep);</span></a>
 <a name="196"><span class="lineNum">     196 </span>            :     } else {</a>
 <a name="197"><span class="lineNum">     197 </span>            :       late Map&lt;dynamic, dynamic&gt; inspectMap;</a>
 <a name="198"><span class="lineNum">     198 </span>            : </a>
 <a name="199"><span class="lineNum">     199 </span>            :       String healthStatus = 'starting';</a>
 <a name="200"><span class="lineNum">     200 </span>            : </a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          3 :       while (healthStatus == 'starting') {</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          3 :         await Future&lt;void&gt;.delayed(const Duration(seconds: 1));</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          4 :       while (healthStatus == 'starting') {</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          4 :         await Future&lt;void&gt;.delayed(const Duration(seconds: 1));</span></a>
 <a name="203"><span class="lineNum">     203 </span>            : </a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          6 :         final String inspectString = await config.exec(</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          3 :           arguments: &lt;String&gt;[</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          8 :         final String inspectString = await config.exec(</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          4 :           arguments: &lt;String&gt;[</span></a>
 <a name="206"><span class="lineNum">     206 </span>            :             'inspect',</a>
 <a name="207"><span class="lineNum">     207 </span>            :             &quot;--format='{{json .State.Health}}'&quot;,</a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          3 :             name,</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          4 :             name,</span></a>
 <a name="209"><span class="lineNum">     209 </span>            :           ],</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         12 :           exceptionExec: 'Container $name with image $image:$tag '</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         16 :           exceptionExec: 'Container $name with image $image:$tag '</span></a>
 <a name="211"><span class="lineNum">     211 </span>            :               'could not be inspected.',</a>
 <a name="212"><span class="lineNum">     212 </span>            :         );</a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
 <a name="214"><span class="lineNum">     214 </span>            :         inspectMap =</a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         12 :             jsonDecode(inspectString.substring(1, inspectString.length - 1));</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         16 :             jsonDecode(inspectString.substring(1, inspectString.length - 1));</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          6 :         if (config.debug) {</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          8 :         if (config.debug) {</span></a>
 <a name="218"><span class="lineNum">     218 </span>            :           // ignore: avoid_print</a>
 <a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :           print('Inspect: $inspectMap');</span></a>
 <a name="220"><span class="lineNum">     220 </span>            :         }</a>
 <a name="221"><span class="lineNum">     221 </span>            : </a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          3 :         healthStatus = inspectMap['Status'];</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          4 :         healthStatus = inspectMap['Status'];</span></a>
 <a name="223"><span class="lineNum">     223 </span>            :       }</a>
 <a name="224"><span class="lineNum">     224 </span>            : </a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          3 :       if (healthStatus != 'healthy') {</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          4 :       if (healthStatus != 'healthy') {</span></a>
 <a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :         throw TestainersException(</span></a>
 <a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :           'Container $name with image $image:$tag is $healthStatus.',</span></a>
 <a name="228"><span class="lineNum">     228 </span>            :           reason: inspectMap,</a>

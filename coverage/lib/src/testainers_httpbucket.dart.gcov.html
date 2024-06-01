@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-02-13 19:55:54</td>
+            <td class="headerValue">2024-06-01 23:48:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -86,11 +86,11 @@
 <a name="24"><span class="lineNum">      24 </span>            :     super.remove = true,</a>
 <a name="25"><span class="lineNum">      25 </span>            :     super.links,</a>
 <a name="26"><span class="lineNum">      26 </span>            :     super.networks,</a>
-<a name="27"><span class="lineNum">      27 </span>            :     super.healthCmd,</a>
-<a name="28"><span class="lineNum">      28 </span>            :     super.healthInterval,</a>
-<a name="29"><span class="lineNum">      29 </span>            :     super.healthRetries,</a>
-<a name="30"><span class="lineNum">      30 </span>            :     super.healthTimeout,</a>
-<a name="31"><span class="lineNum">      31 </span>            :     super.healthStartPeriod,</a>
+<a name="27"><span class="lineNum">      27 </span>            :     super.healthCmd = 'check :8080/health',</a>
+<a name="28"><span class="lineNum">      28 </span>            :     super.healthInterval = 2,</a>
+<a name="29"><span class="lineNum">      29 </span>            :     super.healthRetries = 2,</a>
+<a name="30"><span class="lineNum">      30 </span>            :     super.healthTimeout = 3,</a>
+<a name="31"><span class="lineNum">      31 </span>            :     super.healthStartPeriod = 1,</a>
 <a name="32"><span class="lineNum">      32 </span>            :     super.noHealthcheck,</a>
 <a name="33"><span class="lineNum">      33 </span>            :     super.stopTime,</a>
 <a name="34"><span class="lineNum">      34 </span>            :   })  : _httpPort = httpPort,</a>
@@ -113,7 +113,7 @@
 <a name="51"><span class="lineNum">      51 </span>            :   Future&lt;Map&lt;int, int&gt;&gt; portsFilter(Map&lt;int, int&gt; ports) async {</a>
 <a name="52"><span class="lineNum">      52 </span><span class="lineCov">          2 :     _httpPort ??= await TestainersUtils.generatePort();</span></a>
 <a name="53"><span class="lineNum">      53 </span><span class="lineCov">          2 :     _httpsPort ??= await TestainersUtils.generatePort();</span></a>
-<a name="54"><span class="lineNum">      54 </span>            :     </a>
+<a name="54"><span class="lineNum">      54 </span>            : </a>
 <a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 :     return &lt;int, int&gt;{</span></a>
 <a name="56"><span class="lineNum">      56 </span>            :       ...ports,</a>
 <a name="57"><span class="lineNum">      57 </span><span class="lineCov">          2 :       _httpPort!: 8080,</span></a>
