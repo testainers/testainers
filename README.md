@@ -38,7 +38,7 @@ qualidade para a comunidade de desenvolvedores Flutter e Dart. Qualquer quantia
 será apreciada.
 Obrigado pelo seu apoio contínuo!
 
-[![PIX](helpers/pix.png)](https://nubank.com.br/pagar/2bt2q/RBr4Szfuwr)
+[![PIX](https://testainers.com/assets/assets/images/pix.png)](https://nubank.com.br/pagar/2bt2q/RBr4Szfuwr)
 
 ## Usage
 
@@ -85,13 +85,12 @@ void main() {
 
 ### Open an issue to request a new container.
 
-| Container       | Image                                              | Version | Status |
-|-----------------|----------------------------------------------------|:-------:|:------:| 
-| postgresql      | https://hub.docker.com/_/postgres                  | v0.0.10 |   ✅    |
-| httpbucket      | https://hub.docker.com/r/testainers/httpbucket     | v0.0.6  |   ✅    |
-| redis           | https://hub.docker.com/_/redis                     | v0.0.5  |   ✅    |
-| sshd            | https://hub.docker.com/r/testainers/sshd-container | v0.0.4  |   ✅    |
-| MongoDB         | https://hub.docker.com/_/mongo                     | v0.0.2  |   ✅    |
-| httpbin         | https://hub.docker.com/r/kennethreitz/httpbin      | v0.0.1  |   ✅    |
-| http-https-echo | https://hub.docker.com/r/mendhak/http-https-echo   | v0.0.1  |   ✅    |
-
+| Container       | Image                                              |    Tag    | Version | Status |
+|-----------------|----------------------------------------------------|:---------:|:-------:|:------:| 
+| postgresql      | https://hub.docker.com/_/postgres                  | 16-alpine | v0.2.0  |   ✅    |
+| httpbucket      | https://hub.docker.com/r/testainers/httpbucket     |  latest   | v0.2.0  |   ✅    |
+| redis           | https://hub.docker.com/_/redis                     | 7-alpine  | v0.2.0  |   ✅    |
+| sshd            | https://hub.docker.com/r/testainers/sshd-container |  latest   | v0.2.0  |   ✅    |
+| MongoDB         | https://hub.docker.com/_/mongo                     |  7.0.11   | v0.2.0  |   ✅    |
+| httpbin         | https://hub.docker.com/r/kennethreitz/httpbin      |  latest   | v0.2.0  |   ✅    |
+| http-https-echo | https://hub.docker.com/r/mendhak/http-https-echo   |    33     | v0.2.0  |   ✅    |

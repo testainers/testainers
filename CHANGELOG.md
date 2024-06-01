@@ -1,3 +1,7 @@
+## 0.2.0 - 2024-06-01
+
+- Updating images references.
+
 ## 0.1.1 - 2024-01-28
 
 - Testing publish workflow.

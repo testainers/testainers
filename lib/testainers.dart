@@ -4,6 +4,7 @@ library;
 
 export 'src/testainers_base.dart';
 export 'src/testainers_config.dart';
+export 'src/testainers_exception.dart';
 export 'src/testainers_http_bin.dart';
 export 'src/testainers_http_https_echo.dart';
 export 'src/testainers_httpbucket.dart';
