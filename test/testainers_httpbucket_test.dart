@@ -34,11 +34,32 @@ void main() {
     });
 
     ///
+    test('Http Status Test', () async {
+      final Response response = await get(
+        Uri.parse('http://localhost:${container.httpPort}/status/201'),
+      );
+
+      expect(response.statusCode, 201);
+      expect(response.headers, isNotEmpty);
+      expect(response.body, isNotEmpty);
+    });
+
+    ///
     test('Https Test', () async {
       final HttpClientResponse response = await httpService
           .get(Uri.parse('https://localhost:${container.httpsPort}/methods'));
 
       expect(response.statusCode, 200);
+      expect(response.contentLength, greaterThan(0));
+    });
+
+    ///
+    test('Https Status Test', () async {
+      final HttpClientResponse response = await httpService.get(
+        Uri.parse('https://localhost:${container.httpsPort}/status/201'),
+      );
+
+      expect(response.statusCode, 201);
       expect(response.contentLength, greaterThan(0));
     });
 

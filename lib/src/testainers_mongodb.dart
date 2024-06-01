@@ -19,7 +19,7 @@ class TestainersMongodb extends Testainers {
     super.config,
     super.name,
     super.image = 'mongo',
-    super.tag = '6.0.6',
+    super.tag = '7.0.11',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
     super.detached = true,

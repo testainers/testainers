@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:test/test.dart';
-import 'package:testainers/src/testainers_exception.dart';
 import 'package:testainers/testainers.dart';
 
 ///

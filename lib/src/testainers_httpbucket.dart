@@ -24,11 +24,11 @@ class TestainersHttpbucket extends Testainers {
     super.remove = true,
     super.links,
     super.networks,
-    super.healthCmd,
-    super.healthInterval,
-    super.healthRetries,
-    super.healthTimeout,
-    super.healthStartPeriod,
+    super.healthCmd = 'check :8080/health',
+    super.healthInterval = 2,
+    super.healthRetries = 2,
+    super.healthTimeout = 3,
+    super.healthStartPeriod = 1,
     super.noHealthcheck,
     super.stopTime,
   })  : _httpPort = httpPort,
@@ -51,7 +51,7 @@ class TestainersHttpbucket extends Testainers {
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _httpPort ??= await TestainersUtils.generatePort();
     _httpsPort ??= await TestainersUtils.generatePort();
-    
+
     return <int, int>{
       ...ports,
       _httpPort!: 8080,
