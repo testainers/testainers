@@ -1,17 +1,11 @@
 import 'package:testainers/src/testainers_config.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
-///
-///
-///
 enum TestainersNetworkDriver {
   bridge,
   overlay;
 }
 
-///
-///
-///
 class TestainersNetwork {
   final TestainersNetworkDriver driver;
   final bool attachable;
@@ -19,9 +13,6 @@ class TestainersNetwork {
   final String name;
   String? id;
 
-  ///
-  ///
-  ///
   TestainersNetwork({
     this.driver = TestainersNetworkDriver.bridge,
     this.attachable = true,
@@ -31,9 +22,6 @@ class TestainersNetwork {
             '${TestainersUtils.generateName()}'
                 '${config.networkSuffix}';
 
-  ///
-  ///
-  ///
   Future<String> create() async {
     final List<String> arguments = <String>[
       'network',
@@ -52,9 +40,6 @@ class TestainersNetwork {
     return id!;
   }
 
-  ///
-  ///
-  ///
   Future<void> remove({bool force = false}) async {
     final List<String> arguments = <String>[
       'network',

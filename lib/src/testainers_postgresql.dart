@@ -1,18 +1,12 @@
 import 'package:testainers/src/testainers_base.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
-///
-///
-///
 class TestainersPostgresql extends Testainers {
   final String? _username;
   final String? _password;
   final String? _database;
   int? _port;
 
-  ///
-  ///
-  ///
   TestainersPostgresql({
     String? username,
     String? password,
@@ -21,7 +15,7 @@ class TestainersPostgresql extends Testainers {
     super.config,
     super.name,
     super.image = 'postgres',
-    super.tag = '16-alpine',
+    super.tag = '17-alpine',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
     super.detached = true,
@@ -40,38 +34,20 @@ class TestainersPostgresql extends Testainers {
         _database = database,
         _port = port;
 
-  ///
-  ///
-  ///
   String get username => _username ?? config.defaultUsername;
 
-  ///
-  ///
-  ///
   String get password => _password ?? config.defaultPassword;
 
-  ///
-  ///
-  ///
   String get database => _database ?? config.defaultUsername;
 
-  ///
-  ///
-  ///
   int get port => _port ?? -1;
 
-  ///
-  ///
-  ///
   @override
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _port ??= await TestainersUtils.generatePort();
     return <int, int>{...ports, _port!: 5432};
   }
 
-  ///
-  ///
-  ///
   @override
   Future<Map<String, String>> envFilter(Map<String, String> env) async =>
       <String, String>{

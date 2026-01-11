@@ -1,15 +1,9 @@
 import 'package:testainers/src/testainers_base.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
-///
-///
-///
 class TestainersHttpBin extends Testainers {
   int? _httpPort;
 
-  ///
-  ///
-  ///
   TestainersHttpBin({
     int? httpPort,
     super.config,
@@ -31,14 +25,8 @@ class TestainersHttpBin extends Testainers {
     super.stopTime,
   }) : _httpPort = httpPort;
 
-  ///
-  ///
-  ///
   int get httpPort => _httpPort ?? -1;
 
-  ///
-  ///
-  ///
   @override
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _httpPort ??= await TestainersUtils.generatePort();

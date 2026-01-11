@@ -1,4 +1,4 @@
-/// Testainer is a powerful Dart plugin designed to streamline the management
+/// Testainers is a powerful Dart plugin designed to streamline the management
 /// of containers for testing purposes.
 library;
 

@@ -1,9 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-///
-///
-///
 void main() {
   final Map<String, String> testainers = <String, String>{
     'name': 'testainers',

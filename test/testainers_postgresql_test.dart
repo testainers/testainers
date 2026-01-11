@@ -2,19 +2,12 @@ import 'package:postgres/postgres.dart';
 import 'package:test/test.dart';
 import 'package:testainers/testainers.dart';
 
-///
-///
-///
 void main() {
-  ///
-  ///
-  ///
   group('Test Postgresql', () {
     final TestainersPostgresql container = TestainersPostgresql();
 
     late final Connection connection;
 
-    ///
     setUpAll(() async {
       await container.start();
 
@@ -32,7 +25,6 @@ void main() {
       );
     });
 
-    ///
     test('should connect to the database', () async {
       final Result result = await connection.execute('SELECT 1');
       expect(result, isNotNull);
@@ -40,7 +32,6 @@ void main() {
       expect(result[0][0], 1);
     });
 
-    ///
     test('create a table and insert a row', () async {
       await connection.execute(
         'CREATE TABLE test (id SERIAL PRIMARY KEY, name VARCHAR(99) NOT NULL);',
@@ -73,7 +64,6 @@ void main() {
       await connection.execute('DROP TABLE test');
     });
 
-    ///
     tearDownAll(() async {
       await connection.close();
       await container.stop();

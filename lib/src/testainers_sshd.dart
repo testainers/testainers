@@ -1,17 +1,11 @@
 import 'package:testainers/src/testainers_base.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
-///
-///
-///
 class TestainersSshd extends Testainers {
   final String? _username;
   final String? _password;
   int? _port;
 
-  ///
-  ///
-  ///
   TestainersSshd({
     String? username,
     String? password,
@@ -41,33 +35,18 @@ class TestainersSshd extends Testainers {
         _password = password,
         _port = port;
 
-  ///
-  ///
-  ///
   String get username => _username ?? config.defaultUsername;
 
-  ///
-  ///
-  ///
   String get password => _password ?? config.defaultPassword;
 
-  ///
-  ///
-  ///
   int get port => _port ?? -1;
 
-  ///
-  ///
-  ///
   @override
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _port ??= await TestainersUtils.generatePort();
     return <int, int>{...ports, _port!: 22};
   }
 
-  ///
-  ///
-  ///
   @override
   Future<Map<String, String>> envFilter(Map<String, String> env) async =>
       <String, String>{

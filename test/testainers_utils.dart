@@ -1,9 +1,6 @@
 import 'package:test/test.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
-///
-///
-///
 void main() {
   const Map<String, String> success = <String, String>{
     'TEST1': 'OK',
@@ -23,7 +20,6 @@ void main() {
     'UNCLOSED_FINAL': 'UNCLOSED\n\nFINAL',
   };
 
-  ///
   group('loadEnv', () {
     test('Load file and merge with Platform.environment', () {
       final Map<String, String> env =
@@ -66,7 +62,6 @@ void main() {
     });
   });
 
-  ///
   group('generateName', () {
     test('returns a string with two words separated by a hyphen', () {
       final String name = TestainersUtils.generateName();
