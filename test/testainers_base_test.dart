@@ -4,31 +4,23 @@ import 'package:http/http.dart';
 import 'package:test/test.dart';
 import 'package:testainers/testainers.dart';
 
-///
-///
-///
 void main() {
-  ///
-  ///
-  ///
   group('Test Base', () {
     const int httpPort = 8080;
 
     final Testainers container = Testainers(
       image: 'caddy',
-      tag: '2.6-alpine',
+      tag: '2.10-alpine',
       detached: true,
       remove: true,
       env: const <String, String>{},
       ports: const <int, int>{httpPort: 80},
     );
 
-    ///
     setUpAll(() async {
       await container.start();
     });
 
-    ///
     test('First Test', () async {
       final Response response =
           await get(Uri.parse('http://localhost:$httpPort'));
@@ -38,13 +30,9 @@ void main() {
       expect(response.body, isNotEmpty);
     });
 
-    ///
     tearDownAll(container.stop);
   });
 
-  ///
-  ///
-  ///
   group('Base Errors', () {
     test('Empty runner', () async {
       final Testainers container = Testainers(

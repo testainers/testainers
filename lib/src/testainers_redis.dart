@@ -1,15 +1,9 @@
 import 'package:testainers/src/testainers_base.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
-///
-///
-///
 class TestainersRedis extends Testainers {
   int? _port;
 
-  ///
-  ///
-  ///
   TestainersRedis({
     int? port,
     super.config,
@@ -31,14 +25,8 @@ class TestainersRedis extends Testainers {
     super.stopTime,
   }) : _port = port;
 
-  ///
-  ///
-  ///
   int get port => _port ?? -1;
 
-  ///
-  ///
-  ///
   @override
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _port ??= await TestainersUtils.generatePort();

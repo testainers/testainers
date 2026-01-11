@@ -1,16 +1,10 @@
 import 'package:testainers/src/testainers_base.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
-///
-///
-///
 class TestainersHttpbucket extends Testainers {
   int? _httpPort;
   int? _httpsPort;
 
-  ///
-  ///
-  ///
   TestainersHttpbucket({
     int? httpPort,
     int? httpsPort,
@@ -34,19 +28,10 @@ class TestainersHttpbucket extends Testainers {
   })  : _httpPort = httpPort,
         _httpsPort = httpsPort;
 
-  ///
-  ///
-  ///
   int get httpPort => _httpPort ?? -1;
 
-  ///
-  ///
-  ///
   int get httpsPort => _httpsPort ?? -1;
 
-  ///
-  ///
-  ///
   @override
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async {
     _httpPort ??= await TestainersUtils.generatePort();

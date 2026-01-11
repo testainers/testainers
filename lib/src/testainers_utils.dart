@@ -1,13 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
-///
-///
-///
 class TestainersUtils {
-  ///
-  ///
-  ///
   static Map<String, String> loadEnv({
     String envFile = '.env',
     bool mergeWithPlatform = true,
@@ -76,9 +70,6 @@ class TestainersUtils {
     return env;
   }
 
-  ///
-  ///
-  ///
   static Future<int> generatePort({InternetAddress? address}) async {
     final RawServerSocket socket =
         await RawServerSocket.bind(address ?? InternetAddress.loopbackIPv4, 0);
@@ -87,9 +78,6 @@ class TestainersUtils {
     return port;
   }
 
-  ///
-  ///
-  ///
   static String generateName() {
     final List<String> animalList = <String>[
       'alligator',

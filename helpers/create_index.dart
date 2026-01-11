@@ -1,12 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'dart:io';
 
 import 'package:markdown/markdown.dart';
 
-///
-///
-///
 void main(List<String> args) {
   if (args.length != 2) {
     print('Invalid parameters.');

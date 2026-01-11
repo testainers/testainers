@@ -2,9 +2,6 @@ import 'dart:io';
 
 import 'package:testainers/src/testainers_exception.dart';
 
-///
-///
-///
 class TestainersConfig {
   final bool debug;
   final Duration timeout;
@@ -14,9 +11,6 @@ class TestainersConfig {
   final String defaultPassword;
   final String networkSuffix;
 
-  ///
-  ///
-  ///
   const TestainersConfig({
     this.debug = false,
     this.timeout = const Duration(seconds: 60),
@@ -27,9 +21,6 @@ class TestainersConfig {
     this.networkSuffix = '-net',
   });
 
-  ///
-  ///
-  ///
   Future<String> runnerVersion() async {
     final ProcessResult result = await Process.run(runner, <String>[
       '--version',
@@ -45,17 +36,11 @@ class TestainersConfig {
     return result.stdout.toString().trim();
   }
 
-  ///
-  ///
-  ///
   Future<ProcessResult> _exec({
     required List<String> arguments,
     required String exceptionExec,
   }) async {
-    if (debug) {
-      // ignore: avoid_print
-      print('$runner ${arguments.join(' ')}');
-    }
+    if (debug) print('$runner ${arguments.join(' ')}');
 
     final ProcessResult result = await Process.run(
       runner,
@@ -69,9 +54,6 @@ class TestainersConfig {
     return result;
   }
 
-  ///
-  ///
-  ///
   Future<String> exec({
     required List<String> arguments,
     required String exceptionExec,
@@ -84,9 +66,6 @@ class TestainersConfig {
     return result.stdout.toString().trim();
   }
 
-  ///
-  ///
-  ///
   Future<void> execAndCheck({
     required List<String> arguments,
     required String check,

@@ -49,22 +49,14 @@ import 'package:http/http.dart';
 import 'package:test/test.dart';
 import 'package:testainers/testainers.dart';
 
-///
-///
-///
 void main() {
-  ///
-  ///
-  ///
   group('Test Httpbucket', () {
     final TestainersHttpbucket container = TestainersHttpbucket();
 
-    ///
     setUpAll(() async {
       await container.start();
     });
 
-    ///
     test('Http Test', () async {
       final Response response = await get(
         Uri.parse('http://localhost:${container.httpPort}/methods'),
@@ -75,7 +67,6 @@ void main() {
       expect(response.body, isNotEmpty);
     });
 
-    ///
     tearDownAll(container.stop);
   });
 }
@@ -87,10 +78,10 @@ void main() {
 
 | Container       | Image                                              |    Tag    | Version | Status |
 |-----------------|----------------------------------------------------|:---------:|:-------:|:------:| 
-| postgresql      | https://hub.docker.com/_/postgres                  | 16-alpine | v0.2.0  |   ✅    |
+| postgresql      | https://hub.docker.com/_/postgres                  | 17-alpine | v0.2.0  |   ✅    |
 | httpbucket      | https://hub.docker.com/r/testainers/httpbucket     |  latest   | v0.2.0  |   ✅    |
 | redis           | https://hub.docker.com/_/redis                     | 7-alpine  | v0.2.0  |   ✅    |
 | sshd            | https://hub.docker.com/r/testainers/sshd-container |  latest   | v0.2.0  |   ✅    |
-| MongoDB         | https://hub.docker.com/_/mongo                     |  7.0.11   | v0.2.0  |   ✅    |
+| MongoDB         | https://hub.docker.com/_/mongo                     |    7.0    | v0.2.0  |   ✅    |
 | httpbin         | https://hub.docker.com/r/kennethreitz/httpbin      |  latest   | v0.2.0  |   ✅    |
-| http-https-echo | https://hub.docker.com/r/mendhak/http-https-echo   |    33     | v0.2.0  |   ✅    |
+| http-https-echo | https://hub.docker.com/r/mendhak/http-https-echo   |  latest   | v0.2.0  |   ✅    |

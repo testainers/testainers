@@ -6,9 +6,6 @@ import 'package:testainers/src/testainers_exception.dart';
 import 'package:testainers/src/testainers_network.dart';
 import 'package:testainers/src/testainers_utils.dart';
 
-///
-///
-///
 class Testainers {
   final String image;
   final String tag;
@@ -30,9 +27,6 @@ class Testainers {
   final String name;
   String? id;
 
-  ///
-  ///
-  ///
   Testainers({
     required this.image,
     required this.tag,
@@ -54,37 +48,19 @@ class Testainers {
     String? name,
   }) : name = name ?? TestainersUtils.generateName();
 
-  ///
-  ///
-  ///
   Future<Map<int, int>> portsFilter(Map<int, int> ports) async => ports;
 
-  ///
-  ///
-  ///
   Future<Map<String, String>> envFilter(Map<String, String> env) async => env;
 
-  ///
-  ///
-  ///
   Future<List<String>> linksFilter(List<String> links) async => links;
 
-  ///
-  ///
-  ///
   Future<List<TestainersNetwork>> networksFilter(
     List<TestainersNetwork> networks,
   ) async =>
       networks;
 
-  ///
-  ///
-  ///
   Future<List<String>> commandFilter(List<String> command) async => command;
 
-  ///
-  ///
-  ///
   Future<String> start({Duration? bootSleep}) async {
     if (config.runner.isEmpty) {
       throw TestainersException('Runner not defined.');
@@ -239,7 +215,7 @@ class Testainers {
   Future<void> stop() async {
     final List<String> arguments = <String>[
       'stop',
-      if (stopTime > 0) ...<String>['--time', '$stopTime'],
+      if (stopTime > 0) ...<String>['--timeout', '$stopTime'],
       name,
     ];
 

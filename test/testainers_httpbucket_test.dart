@@ -6,23 +6,15 @@ import 'package:testainers/testainers.dart';
 
 import '../helpers/http_service.dart';
 
-///
-///
-///
 void main() {
-  ///
-  ///
-  ///
   group('Test Httpbucket', () {
     final TestainersHttpbucket container = TestainersHttpbucket();
     final HttpService httpService = HttpService();
 
-    ///
     setUpAll(() async {
       await container.start();
     });
 
-    ///
     test('Http Test', () async {
       final Response response = await get(
         Uri.parse('http://localhost:${container.httpPort}/methods'),
@@ -33,7 +25,6 @@ void main() {
       expect(response.body, isNotEmpty);
     });
 
-    ///
     test('Http Status Test', () async {
       final Response response = await get(
         Uri.parse('http://localhost:${container.httpPort}/status/201'),
@@ -44,7 +35,6 @@ void main() {
       expect(response.body, isNotEmpty);
     });
 
-    ///
     test('Https Test', () async {
       final HttpClientResponse response = await httpService
           .get(Uri.parse('https://localhost:${container.httpsPort}/methods'));
@@ -53,7 +43,6 @@ void main() {
       expect(response.contentLength, greaterThan(0));
     });
 
-    ///
     test('Https Status Test', () async {
       final HttpClientResponse response = await httpService.get(
         Uri.parse('https://localhost:${container.httpsPort}/status/201'),
@@ -63,7 +52,6 @@ void main() {
       expect(response.contentLength, greaterThan(0));
     });
 
-    ///
     tearDownAll(() {
       httpService.close();
       container.stop();
