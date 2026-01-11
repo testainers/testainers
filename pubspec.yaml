@@ -1,6 +1,6 @@
 name: testainers
 description: Testainers is a powerful Dart plugin designed to streamline the management of containers for testing purposes.
-version: 0.2.0
+version: 0.3.0
 repository: https://github.com/testainers/testainers
 homepage: https://testainers.testainers.com/
 

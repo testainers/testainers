@@ -1,3 +1,8 @@
+## 0.3.0 - 2026-01-11
+
+- Updating project structure.
+- Updating images references.
+
 ## 0.2.0 - 2024-06-01
 
 - Updating images references.

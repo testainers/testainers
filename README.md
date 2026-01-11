@@ -49,22 +49,14 @@ import 'package:http/http.dart';
 import 'package:test/test.dart';
 import 'package:testainers/testainers.dart';
 
-///
-///
-///
 void main() {
-  ///
-  ///
-  ///
   group('Test Httpbucket', () {
     final TestainersHttpbucket container = TestainersHttpbucket();
 
-    ///
     setUpAll(() async {
       await container.start();
     });
 
-    ///
     test('Http Test', () async {
       final Response response = await get(
         Uri.parse('http://localhost:${container.httpPort}/methods'),
@@ -75,7 +67,6 @@ void main() {
       expect(response.body, isNotEmpty);
     });
 
-    ///
     tearDownAll(container.stop);
   });
 }
