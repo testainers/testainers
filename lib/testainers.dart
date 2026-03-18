@@ -3,6 +3,7 @@
 library;
 
 export 'src/testainers_base.dart';
+export 'src/testainers_compose.dart';
 export 'src/testainers_config.dart';
 export 'src/testainers_exception.dart';
 export 'src/testainers_http_bin.dart';

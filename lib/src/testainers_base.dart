@@ -209,9 +209,67 @@ class Testainers {
     return id!;
   }
 
+  /// Executes a command inside a running container.
   ///
+  /// The container must be started (via [start]) before calling this method.
+  /// Uses `docker exec` (or the configured runner) to run the given [command]
+  /// inside the container identified by [name].
   ///
+  /// Parameters:
+  /// - [command] — the command and its arguments to execute inside the
+  ///   container (e.g., `['echo', 'hello']` or `['psql', '-c', 'SELECT 1']`).
+  /// - [interactive] — if `true`, allocates a pseudo-TTY (`-i -t` flags).
+  ///   Defaults to `false`, which runs without TTY allocation
+  ///   (suitable for non-interactive / scripted usage).
   ///
+  /// Returns the trimmed stdout output of the executed command.
+  ///
+  /// Throws [TestainersException] if the container has not been started
+  /// (i.e., [id] is `null`) or if the command exits with a non-zero code.
+  ///
+  /// Example:
+  /// ```dart
+  /// final container = Testainers(
+  ///   image: 'alpine', tag: 'latest',
+  ///   detached: true, remove: true,
+  ///   env: {}, ports: {},
+  /// );
+  /// await container.start();
+  ///
+  /// final output = await container.exec(command: ['echo', 'hello']);
+  /// print(output); // 'hello'
+  ///
+  /// await container.stop();
+  /// ```
+  Future<String> exec({
+    required List<String> command,
+    bool interactive = false,
+  }) async {
+    if (id == null) {
+      throw TestainersException('Container $name not started.');
+    }
+
+    final List<String> arguments = <String>[
+      'exec',
+      if (interactive) ...<String>['-i', '-t'],
+      name,
+      ...command,
+    ];
+
+    return config.exec(
+      arguments: arguments,
+      exceptionExec: 'Exec failed in container $name.',
+    );
+  }
+
+  /// Stops the container.
+  ///
+  /// Sends a stop signal to the running container identified by [name].
+  /// If [stopTime] is greater than zero, it is passed as the `--timeout`
+  /// argument to the stop command.
+  ///
+  /// Throws [TestainersException] if the container could not be stopped
+  /// or if the stop output does not match the expected container name.
   Future<void> stop() async {
     final List<String> arguments = <String>[
       'stop',
