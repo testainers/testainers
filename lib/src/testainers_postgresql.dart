@@ -15,7 +15,7 @@ class TestainersPostgresql extends Testainers {
     super.config,
     super.name,
     super.image = 'postgres',
-    super.tag = '17-alpine',
+    super.tag = '18-alpine',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
     super.detached = true,

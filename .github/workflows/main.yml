@@ -56,19 +56,19 @@ jobs:
       - name: Dart Test
         run: |
           dart test \
-          --coverage=coverage \
-          --concurrency=$(grep -c processor /proc/cpuinfo)
+            --coverage-path=./coverage/lcov.info \
+            --concurrency=$(grep -c processor /proc/cpuinfo)
 
-      - name: Creating package filter.
-        run: dart run helpers/package.dart
+#      - name: Creating package filter
+#        run: dart run helpers/package.dart
 
-      - name: Creating lcov.info
-        run: |
-          dart run coverage:format_coverage \
-          --packages=coverage/package.json \
-          --lcov \
-          -i coverage \
-          -o coverage/lcov.info
+#      - name: Creating lcov.info
+#        run: |
+#          dart run coverage:format_coverage \
+#          --packages=coverage/package.json \
+#          --lcov \
+#          -i coverage \
+#          -o coverage/lcov.info
 
       - name: Creating Test Coverage HTML
         run: |

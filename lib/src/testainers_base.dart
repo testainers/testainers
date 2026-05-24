@@ -132,7 +132,7 @@ class Testainers {
         ..add(network.name);
     }
 
-    if (healthCmd.isNotEmpty) {
+    if (healthCmd.isNotEmpty && !noHealthcheck) {
       arguments.add('--health-cmd=$healthCmd');
 
       if (healthInterval > 0) {
