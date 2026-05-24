@@ -40,7 +40,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo apt-get update -y
+          sudo apt update -y
           sudo apt install -y lcov
 
       - name: Dart Pub Get
@@ -48,7 +48,7 @@ jobs:
         run: dart pub get
 
       - name: Login to DockerHub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ env.OWNER }}
           password: ${{ secrets.DOCKER_TOKEN }}
@@ -56,25 +56,16 @@ jobs:
       - name: Dart Test
         run: |
           dart test \
-          --coverage=coverage \
-          --concurrency=$(grep -c processor /proc/cpuinfo)
-
-      - name: Creating package filter.
-        run: dart run helpers/package.dart
-
-      - name: Creating lcov.info
-        run: |
-          dart run coverage:format_coverage \
-          --packages=coverage/package.json \
-          --lcov \
-          -i coverage \
-          -o coverage/lcov.info
+            --coverage-path=./coverage/lcov.info \
+            --reporter=github \
+            --concurrency=$(grep -c processor /proc/cpuinfo)
 
       - name: Creating Test Coverage HTML
         run: |
           genhtml coverage/lcov.info \
             --output-directory coverage/html/coverage \
             --title "testainers" \
+            --dark-mode \
             --show-details
 
       - name: Creating package filter.

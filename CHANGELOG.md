@@ -1,3 +1,8 @@
+## 0.4.0 - 2026-05-24
+
+- Docker compose support by @ulisseshen
+- Updating dependencies.
+
 ## 0.3.0 - 2026-01-11
 
 - Updating project structure.

@@ -23,7 +23,7 @@ class TestainersHttpbucket extends Testainers {
     super.healthRetries = 2,
     super.healthTimeout = 3,
     super.healthStartPeriod = 1,
-    super.noHealthcheck,
+    super.noHealthcheck = true,
     super.stopTime,
   })  : _httpPort = httpPort,
         _httpsPort = httpsPort;

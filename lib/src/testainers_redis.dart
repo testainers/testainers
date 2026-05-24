@@ -9,7 +9,7 @@ class TestainersRedis extends Testainers {
     super.config,
     super.name,
     super.image = 'redis',
-    super.tag = '7-alpine',
+    super.tag = '8-alpine',
     super.ports = const <int, int>{},
     super.env = const <String, String>{},
     super.detached = true,
