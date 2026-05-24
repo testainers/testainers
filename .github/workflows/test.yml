@@ -39,4 +39,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Dart Test
-        run: dart test
+        run: |
+          dart test \
+            --reporter=github \
+            --concurrency=$(grep -c processor /proc/cpuinfo)
