@@ -1,0 +1,1 @@
+genhtml coverage/lcov.info --output-directory coverage/html/coverage --title testainers --dark-mode --show-details
